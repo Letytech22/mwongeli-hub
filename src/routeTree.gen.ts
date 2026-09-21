@@ -10,33 +10,63 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as CallConfirmedRouteImport } from './routes/call-confirmed'
+import { Route as FreeGuideRouteImport } from './routes/free-guide'
+import { Route as ResearchGuideRouteImport } from './routes/research-guide'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CallConfirmedRoute = CallConfirmedRouteImport.update({
+  id: '/call-confirmed',
+  path: '/call-confirmed',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FreeGuideRoute = FreeGuideRouteImport.update({
+  id: '/free-guide',
+  path: '/free-guide',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ResearchGuideRoute = ResearchGuideRouteImport.update({
+  id: '/research-guide',
+  path: '/research-guide',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/call-confirmed': typeof CallConfirmedRoute
+  '/free-guide': typeof FreeGuideRoute
+  '/research-guide': typeof ResearchGuideRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/call-confirmed': typeof CallConfirmedRoute
+  '/free-guide': typeof FreeGuideRoute
+  '/research-guide': typeof ResearchGuideRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/call-confirmed': typeof CallConfirmedRoute
+  '/free-guide': typeof FreeGuideRoute
+  '/research-guide': typeof ResearchGuideRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths: '/' | '/call-confirmed' | '/free-guide' | '/research-guide'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/call-confirmed' | '/free-guide' | '/research-guide'
+  id: '__root__' | '/' | '/call-confirmed' | '/free-guide' | '/research-guide'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  CallConfirmedRoute: typeof CallConfirmedRoute
+  FreeGuideRoute: typeof FreeGuideRoute
+  ResearchGuideRoute: typeof ResearchGuideRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +78,35 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/call-confirmed': {
+      id: '/call-confirmed'
+      path: '/call-confirmed'
+      fullPath: '/call-confirmed'
+      preLoaderRoute: typeof CallConfirmedRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/free-guide': {
+      id: '/free-guide'
+      path: '/free-guide'
+      fullPath: '/free-guide'
+      preLoaderRoute: typeof FreeGuideRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/research-guide': {
+      id: '/research-guide'
+      path: '/research-guide'
+      fullPath: '/research-guide'
+      preLoaderRoute: typeof ResearchGuideRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  CallConfirmedRoute: CallConfirmedRoute,
+  FreeGuideRoute: FreeGuideRoute,
+  ResearchGuideRoute: ResearchGuideRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
