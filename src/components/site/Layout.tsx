@@ -6,8 +6,8 @@ import {
 
 import type { ReactNode } from "react";
 
-import { useEffect, useRef, useState } from "react";
-
+import { useEffect, useState } from "react";
+import Preloader from "@/components/site/Preloader";
 import {
   Bookmark,
   Facebook,
@@ -209,42 +209,39 @@ function PageLoader({ show }: { show: boolean }) {
 }
 
 export function PageShell({ children }: { children: ReactNode }) {
-  const location = useLocation();
-
-  const [loading, setLoading] = useState(false);
-
-  const firstRender = useRef(true);
+  const [showPreloader, setShowPreloader] = useState(true);
+  const [isLeaving, setIsLeaving] = useState(false);
 
   useEffect(() => {
-    // Do not show loader when the website first opens
-    if (firstRender.current) {
-      firstRender.current = false;
-      return;
-    }
+    const leaveTimer = window.setTimeout(() => {
+      setIsLeaving(true);
+    }, 2000);
 
-    setLoading(true);
+    const removeTimer = window.setTimeout(() => {
+      setShowPreloader(false);
+    }, 2900);
 
-    const timer = window.setTimeout(() => {
-      setLoading(false);
-    }, 1400);
-
-    return () => window.clearTimeout(timer);
-  }, [location.pathname]);
+    return () => {
+      window.clearTimeout(leaveTimer);
+      window.clearTimeout(removeTimer);
+    };
+  }, []);
 
   return (
     <div className="flex min-h-screen flex-col bg-background">
-      <PageLoader show={loading} />
+
+      {showPreloader && (
+        <Preloader isLeaving={isLeaving} />
+      )}
 
       <SiteHeader />
 
-      <main
-        key={location.pathname}
-        className="flex-1 animate-[pageFade_0.6s_ease-out]"
-      >
+      <main className="flex-1">
         {children}
       </main>
 
       <SiteFooter />
+
     </div>
   );
 }
