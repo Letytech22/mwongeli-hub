@@ -1,4 +1,8 @@
-import { createFileRoute, useNavigate } from "@tanstack/react-router";
+import {
+  createFileRoute,
+  useNavigate,
+  Link,
+} from "@tanstack/react-router";
 import { useState } from "react";
 import { PageShell } from "@/components/site/Layout";
 import { Arrow, Card, Check, Eyebrow, ExternalCta, Section } from "@/components/site/ui";
@@ -72,23 +76,24 @@ function Home() {
 
 function Hero() {
   return (
-    <section className="bg-[#5b453e] text-white">
-<div className="mx-auto grid w-full max-w-[1460px] gap-12 px-6 pt-8 pb-14 sm:px-10 sm:pt-10 sm:pb-16 lg:grid-cols-[1.8fr_0.9fr] lg:items-center lg:gap-20 lg:px-16 lg:pt-12 lg:pb-20">
-        {/* Left side */}
-        <div className="max-w-[900px]">
+    <section className="w-full overflow-hidden bg-[#5b453e] text-white">
+      <div className="mx-auto grid w-full max-w-[1460px] gap-10 px-5 pb-14 pt-8 sm:gap-12 sm:px-10 sm:pb-16 sm:pt-10 lg:grid-cols-[1.8fr_0.9fr] lg:items-center lg:gap-20 lg:px-16 lg:pb-20 lg:pt-12">
 
-          <p className="text-xs font-bold uppercase tracking-[0.03em] text-white sm:text-sm">
+        {/* Left side */}
+        <div className="min-w-0 max-w-[900px]">
+
+          <p className="text-[0.7rem] font-bold uppercase leading-[1.5] tracking-[0.03em] text-white sm:text-sm">
             Research Design · Researchers, Founders &amp; R&amp;D Teams
           </p>
 
-          <h1 className="mt-10 max-w-[760px] font-display text-[2rem] font-bold leading-[1.18] tracking-[-0.02em] text-white sm:text-[2.4rem] lg:text-[3rem]">
-  Know what you are
-  <br className="hidden sm:block" /> actually trying to find out.
-  <br />
-  Build the research around that.
-</h1>
+          <h1 className="mt-8 max-w-[760px] break-words font-display text-[1.7rem] font-bold leading-[1.18] tracking-[-0.02em] text-white sm:mt-10 sm:text-[2.4rem] lg:text-[3rem]">
+            Know what you are
+            <br className="hidden sm:block" /> actually trying to find out.
+            <br />
+            Build the research around that.
+          </h1>
 
-          <p className="mt-6 max-w-[820px] text-base leading-[1.6] text-white/90 sm:text-[1.05rem] lg:text-[1.1rem]">
+          <p className="mt-6 max-w-[820px] text-sm leading-[1.65] text-white/90 sm:text-[1.05rem] lg:text-[1.1rem]">
             You can have a promising topic, a stack of papers, and a method in
             mind and still be building the study around the wrong question. I
             work with researchers, technical founders, and R&amp;D teams to
@@ -97,34 +102,34 @@ function Hero() {
             support.
           </p>
 
-          <div className="mt-9 flex flex-wrap gap-4">
+          <div className="mt-8 flex w-full flex-col gap-3 sm:mt-9 sm:flex-row sm:flex-wrap sm:gap-4">
+
             <a
-              href={WHOP}
+              href={WHOP.bookCall150}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex min-h-14 items-center justify-center rounded-lg bg-[#a68b4d] px-6 text-sm font-bold uppercase tracking-[0.01em] text-white no-underline transition hover:bg-[#947a42]"
+              className="inline-flex min-h-12 w-full items-center justify-center rounded-lg bg-[#a68b4d] px-5 text-xs font-bold uppercase tracking-[0.01em] text-white no-underline transition hover:bg-[#947a42] sm:min-h-14 sm:w-auto sm:px-6 sm:text-sm"
             >
               Book a call with me
             </a>
 
-            <a
-              href={SUBSTACK}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex min-h-14 items-center justify-center rounded-lg border border-white/80 bg-transparent px-6 text-sm font-bold uppercase tracking-[0.01em] text-white no-underline transition hover:bg-white hover:text-[#5b453e]"
+            <Link
+              to="/deep-review"
+              className="inline-flex min-h-12 w-full items-center justify-center rounded-lg border border-white/80 bg-transparent px-5 text-xs font-bold uppercase tracking-[0.01em] text-white no-underline transition hover:bg-white hover:text-[#5b453e] sm:min-h-14 sm:w-auto sm:px-6 sm:text-sm"
             >
               The Deep Review
-            </a>
+            </Link>
+
           </div>
         </div>
 
         {/* Right side */}
-        <div className="flex justify-center lg:justify-end">
+        <div className="min-w-0 flex justify-center lg:justify-end">
           <div className="w-full max-w-[460px] overflow-hidden">
             <img
               src="/ruth-hero.jpg"
               alt="Dr. Ruth Mwongeli Muthoka"
-              className="h-[520px] w-full object-cover object-center sm:h-[620px] lg:h-[580px]"
+              className="h-[400px] w-full object-cover object-center sm:h-[620px] lg:h-[580px]"
             />
           </div>
         </div>
@@ -133,7 +138,6 @@ function Hero() {
     </section>
   );
 }
-
 function FreeResearchGuide() {
   return (
     <>

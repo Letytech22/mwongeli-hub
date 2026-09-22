@@ -19,36 +19,105 @@ import { SUBSTACK } from "@/lib/links";
 
 export function SiteHeader() {
   return (
-    <header className="sticky top-0 z-50 bg-[#5b453e] text-white">
-      <div className="relative flex min-h-[82px] w-full items-center justify-between px-5 sm:px-7 lg:px-10">
+    <header className="sticky top-0 z-50 w-full overflow-hidden bg-[#5b453e] text-white">
 
-        {/* Left: Name */}
+      {/* MOBILE HEADER */}
+      <div className="md:hidden">
+        {/* Name */}
+        <div className="px-4 pt-4 text-center">
+          <Link
+            to="/"
+            className="no-underline text-white"
+          >
+            <span className="font-display text-[0.95rem] font-bold tracking-tight">
+              Dr. Ruth Mwongeli Muthoka
+            </span>
+          </Link>
+        </div>
+
+        {/* Deep Review + socials */}
+        <div className="mt-3 flex items-center justify-between border-t border-white/10 px-4 py-3">
+
+          <Link
+            to="/deep-review"
+            className="shrink-0 font-display text-xs font-bold text-white no-underline"
+          >
+            The Deep Review
+          </Link>
+
+          <div className="flex shrink-0 items-center gap-3">
+            <a
+              href="https://www.linkedin.com/in/ruthmwongelimuthoka/"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="LinkedIn"
+              className="text-white"
+            >
+              <Linkedin className="h-[18px] w-[18px]" />
+            </a>
+
+            <a
+              href={SUBSTACK}
+              target="_blank"
+              rel="noreferrer"
+              aria-label="The Deep Review"
+              className="text-white"
+            >
+              <Bookmark
+                className="h-[18px] w-[18px]"
+                fill="currentColor"
+              />
+            </a>
+
+            <a
+              href="https://instagram.com/ruthmwongeli"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Instagram"
+              className="text-white"
+            >
+              <Instagram className="h-[18px] w-[18px]" />
+            </a>
+
+            <a
+              href="https://www.facebook.com/ruth.mwongeli.1"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Facebook"
+              className="text-white"
+            >
+              <Facebook
+                className="h-[18px] w-[18px]"
+                fill="currentColor"
+              />
+            </a>
+          </div>
+
+        </div>
+      </div>
+
+      {/* DESKTOP HEADER */}
+      <div className="relative hidden min-h-[82px] w-full items-center justify-between px-5 sm:px-7 md:flex lg:px-10">
+
         <Link
           to="/"
           className="shrink-0 no-underline text-white"
         >
-          <span className="font-display text-lg font-bold tracking-tight sm:text-xl lg:text-2xl">
+          <span className="font-display text-lg font-bold tracking-tight lg:text-2xl">
             Dr. Ruth Mwongeli Muthoka
           </span>
         </Link>
 
-        {/* Center: The Deep Review */}
         <Link
           to="/deep-review"
-          className="
-            absolute left-1/2 hidden -translate-x-1/2
-            no-underline text-white
-            md:block
-          "
+          className="absolute left-1/2 -translate-x-1/2 no-underline text-white"
         >
           <span className="font-display text-base font-bold lg:text-xl">
             The Deep Review
           </span>
         </Link>
 
-        {/* Right: Social links */}
-        <div className="flex items-center gap-4 sm:gap-5">
-
+        <div className="flex items-center gap-4 lg:gap-5">
           <a
             href="https://www.linkedin.com/in/ruthmwongelimuthoka/"
             target="_blank"
@@ -56,10 +125,7 @@ export function SiteHeader() {
             aria-label="LinkedIn"
             className="text-white transition-opacity hover:opacity-70"
           >
-            <Linkedin
-              className="h-5 w-5 sm:h-6 sm:w-6"
-              strokeWidth={2.4}
-            />
+            <Linkedin className="h-6 w-6" />
           </a>
 
           <a
@@ -70,9 +136,8 @@ export function SiteHeader() {
             className="text-white transition-opacity hover:opacity-70"
           >
             <Bookmark
-              className="h-5 w-5 sm:h-6 sm:w-6"
+              className="h-6 w-6"
               fill="currentColor"
-              strokeWidth={2}
             />
           </a>
 
@@ -83,10 +148,7 @@ export function SiteHeader() {
             aria-label="Instagram"
             className="text-white transition-opacity hover:opacity-70"
           >
-            <Instagram
-              className="h-5 w-5 sm:h-6 sm:w-6"
-              strokeWidth={2.4}
-            />
+            <Instagram className="h-6 w-6" />
           </a>
 
           <a
@@ -97,23 +159,12 @@ export function SiteHeader() {
             className="text-white transition-opacity hover:opacity-70"
           >
             <Facebook
-              className="h-5 w-5 sm:h-6 sm:w-6"
+              className="h-6 w-6"
               fill="currentColor"
-              strokeWidth={2}
             />
           </a>
-
         </div>
-      </div>
 
-      {/* Mobile title */}
-      <div className="border-t border-white/10 px-5 pb-3 text-center md:hidden">
-        <Link
-          to="/"
-          className="font-display text-sm font-bold text-white no-underline"
-        >
-          The Deep Review
-        </Link>
       </div>
     </header>
   );
@@ -228,8 +279,7 @@ export function PageShell({ children }: { children: ReactNode }) {
   }, []);
 
   return (
-    <div className="flex min-h-screen flex-col bg-background">
-
+<div className="flex min-h-screen w-full max-w-full flex-col overflow-x-hidden bg-background">
       {showPreloader && (
         <Preloader isLeaving={isLeaving} />
       )}
