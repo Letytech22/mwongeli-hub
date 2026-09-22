@@ -359,7 +359,7 @@ function ProfileLinks() {
         </a>
 
         <a
-          href="YOUR_GOOGLE_SCHOLAR_URL"
+          href="https://scholar.google.com/citations?user=2lL-ck8AAAAJ&hl=en"
           target="_blank"
           rel="noopener noreferrer"
           className="font-display text-sm font-bold text-[#5b453e] no-underline transition-opacity hover:underline sm:text-base"
@@ -475,12 +475,12 @@ function DeepReview() {
               Deep Review, the $150 is credited toward the $1,500 fee.
             </p>
 
-            <a
-              href="/deep-review/apply"
-              className="mt-7 inline-block text-xs font-bold uppercase tracking-[0.02em] text-[#5b453e] no-underline hover:underline hover:underline-offset-4"
-            >
-              Learn more
-            </a>
+            <Link
+  to="/deep-review"
+  className="mt-7 inline-flex items-center justify-center rounded-full bg-accent px-7 py-3.5 text-sm font-semibold uppercase tracking-[0.12em] text-accent-contrast no-underline transition-all hover:-translate-y-0.5 hover:opacity-90"
+>
+  Learn more
+</Link>
           </div>
 
           {/* Right */}
@@ -524,7 +524,7 @@ function DeepReview() {
   );
 }
 
-
+/*
 function TwoWaysToWork() {
   return (
     <section className="bg-[#5b453e] text-white">
@@ -535,8 +535,9 @@ function TwoWaysToWork() {
         </h2>
 
         <div className="mx-auto mt-10 grid max-w-[700px] gap-10 sm:grid-cols-2 sm:gap-0">
-
+*/
           {/* 01 */}
+          /*
           <div className="text-center sm:border-l sm:border-r sm:border-white/40 sm:px-12">
                       <p className="text-sm font-bold">
               01
@@ -559,8 +560,10 @@ function TwoWaysToWork() {
               Book a call →
             </a>
           </div>
+          
 
-          {/* 02 */}
+          {/* 02 */ 
+          /*
           <div className="text-center sm:border-r sm:border-white/40 sm:px-12">
             <p className="text-sm font-bold">
               02
@@ -587,7 +590,74 @@ function TwoWaysToWork() {
     </section>
   );
 }
+*/
 
+
+function TwoWaysToWork() {
+  return (
+    <section className="bg-[#5b453e] text-white">
+      <div className="mx-auto w-full max-w-[1100px] px-6 py-12 sm:px-10 lg:py-14">
+
+        <h2 className="text-center text-xs font-bold uppercase tracking-[0.02em] text-white">
+          Two ways to work with me
+        </h2>
+
+        <div className="mx-auto mt-10 grid max-w-[760px] gap-5 sm:grid-cols-2">
+
+          {/* 01 */}
+          <div className="rounded-2xl border border-white/20 bg-white/5 px-8 py-10 text-center shadow-lg backdrop-blur-sm transition duration-300 hover:-translate-y-1 hover:bg-white/10">
+            <p className="text-sm font-bold text-white/80">
+              01
+            </p>
+
+            <h3 className="mt-3 font-display text-base font-bold">
+              Book a Call with Me
+            </h3>
+
+            <p className="mt-6 text-sm text-white/85">
+              60 minutes · $150
+            </p>
+
+            <a
+              href={WHOP.bookCall150}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-6 inline-flex items-center justify-center rounded-full bg-white px-6 py-3 text-xs font-bold uppercase tracking-[0.05em] text-[#5b453e] no-underline transition hover:bg-white/90"
+            >
+              Book a call →
+            </a>
+          </div>
+
+          {/* 02 */}
+          <div className="rounded-2xl border border-white/20 bg-white/5 px-8 py-10 text-center shadow-lg backdrop-blur-sm transition duration-300 hover:-translate-y-1 hover:bg-white/10">
+            <p className="text-sm font-bold text-white/80">
+              02
+            </p>
+
+            <h3 className="mt-3 font-display text-base font-bold">
+              The Deep Review
+            </h3>
+
+            <p className="mt-6 text-sm font-bold text-white/85">
+              $1,500
+            </p>
+
+            <Link
+              to="/deep-review"
+              className="mt-6 inline-flex items-center justify-center rounded-full border border-white/70 px-6 py-3 text-xs font-bold uppercase tracking-[0.05em] text-white no-underline transition hover:bg-white hover:text-[#5b453e]"
+            >
+              Learn more →
+            </Link>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  );
+}
+
+
+/*
 function HelpWith() {
   return (
     <section className="bg-white text-[#5b453e]">
@@ -626,6 +696,43 @@ function HelpWith() {
     </section>
   );
 }
+  */
+
+function HelpWith() {
+  return (
+    <section className="bg-white text-[#5b453e]">
+      <div className="mx-auto w-full max-w-[1450px] px-6 py-12 sm:px-10 lg:px-16 lg:py-14">
+
+        <h2 className="text-center font-display text-[1.3rem] font-bold uppercase tracking-[0.01em] sm:text-[1.5rem]">
+          What I can help with
+        </h2>
+
+        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          {helpWith.map((h) => (
+            <div
+              key={h.n}
+              className="rounded-2xl border border-[#5b453e]/15 bg-white p-7 shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-md"
+            >
+              <p className="text-sm font-semibold text-[#9a8555]">
+                {h.n}
+              </p>
+
+              <h3 className="mt-3 font-display text-[1rem] font-bold leading-[1.4] text-[#5b453e]">
+                {h.title}
+              </h3>
+
+              <p className="mt-5 text-sm leading-[1.6] text-[#5b453e]/80">
+                {h.body}
+              </p>
+            </div>
+          ))}
+        </div>
+
+      </div>
+    </section>
+  );
+}
+
 
 function Resources() {
   return (
@@ -636,6 +743,7 @@ function Resources() {
       <div className="mx-auto w-full max-w-[1200px] px-6 py-10 sm:px-10 lg:px-12 lg:py-12">
 
         {/* Section heading */}
+        
         <div className="text-center">
           <p className="text-lg font-bold text-[#5b453e]">
             Resources
@@ -655,9 +763,11 @@ function Resources() {
         </div>
 
         {/* Guides */}
+        
         <div className="mt-10 grid gap-12 lg:grid-cols-2 lg:gap-0">
 
           {/* Free guide */}
+          
           <div className="lg:border-r lg:border-[#5b453e]/60 lg:pr-12">
 
             <p className="text-[0.95rem] uppercase tracking-[0.02em] text-[#5b453e]/80">
@@ -689,19 +799,30 @@ function Resources() {
               <li>→ A short section on using AI without handing over the thinking that makes you a researcher</li>
             </ul>
 
+            <div className="mt-6 rounded-r-xl border-l-4 border-[#9a8555] bg-[#5b453e]/[0.04] px-5 py-4">
+  <p className="text-[0.95rem] leading-[1.7] text-[#5b453e]/85">
+    This guide is designed to help you work out whether you actually have a
+    research problem, whether the question can be answered, and what needs to
+    be clear before you choose a method.
+  </p>
+</div>
+
             <p className="mt-6 text-[0.95rem] font-bold uppercase">
               Free · PDF
             </p>
 
             <a
-              href="/#free-guide"
-              className="mt-1 inline-block text-[0.95rem] font-bold uppercase text-[#5b453e] no-underline hover:underline hover:underline-offset-4"
-            >
-              Get the guide ↗
-            </a>
+  href="https://drive.google.com/uc?export=download&id=1-L4xDUMSp3pFjr7oB5PUsYl-qz6zRSeL"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="mt-1 inline-block text-[0.95rem] font-bold uppercase text-[#5b453e] no-underline hover:underline hover:underline-offset-4"
+>
+  Get the guide ↗
+</a>
           </div>
 
           {/* Paid guide */}
+          
           <div className="lg:pl-12">
 
             <p className="text-[0.95rem] uppercase tracking-[0.02em] text-[#5b453e]/80">
@@ -751,6 +872,7 @@ function Resources() {
         </div>
 
         {/* Decorative divider */}
+        
 <div className="mt-16 flex items-center justify-center gap-3">
   <span className="h-3 w-3 rounded-full bg-[#7a4638]" />
   <span className="h-3 w-3 rounded-full bg-[#7a4638]" />
@@ -760,6 +882,123 @@ function Resources() {
     </section>
   );
 }
+  
+
+/*
+function Resources() {
+  return (
+    <section
+      id="resources"
+      className="scroll-mt-20 border-t-2 border-[#5b453e] bg-white text-[#5b453e]"
+    >
+      <div className="mx-auto w-full max-w-[1200px] px-6 py-10 sm:px-10 lg:px-12 lg:py-12">
+
+        {/* Section heading */
+/*
+        <div className="text-center">
+          <p className="text-lg font-bold text-[#5b453e]">
+            Resources
+          </p>
+
+          <h2 className="mt-8 font-display text-lg font-bold leading-tight text-[#5b453e] sm:text-[1.2rem]">
+            The research guides I wish I had earlier.
+          </h2>
+
+          <p className="mx-auto mt-6 max-w-[1100px] text-[0.95rem] font-semibold leading-[1.6] text-[#5b453e]/90 sm:text-base lg:text-[1.05rem]">
+            Practical guides and tools for finding the real research problem,
+            asking better questions, choosing methods that actually fit the
+            question, making sense of results, and knowing what to do when the
+            work gets messy. Some are free, some go deeper. Start with the
+            problem you are trying to solve.
+          </p>
+        </div>
+
+        {/* Resource cards */
+        /*
+        <div className="mx-auto mt-12 grid max-w-[900px] gap-8 sm:grid-cols-2">
+
+          {/* Free guide */
+          /*
+          <div className="group overflow-hidden rounded-2xl border border-[#5b453e]/15 bg-white shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-lg">
+
+            <a href="/#free-guide" className="block">
+              <img
+                src="/free-guide.jpg"
+                alt="Before You Choose a Method research guide"
+                className="h-auto w-full object-cover transition duration-300 group-hover:scale-[1.02]"
+              />
+            </a>
+
+            <div className="p-6 text-center">
+              <p className="text-xs font-semibold uppercase tracking-[0.06em] text-[#9a8555]">
+                Free · PDF
+              </p>
+
+              <h3 className="mt-3 font-display text-base font-bold text-[#5b453e]">
+                Before You Choose a Method
+              </h3>
+
+              <a
+                href="/#free-guide"
+                className="mt-5 inline-flex items-center justify-center rounded-full bg-[#5b453e] px-6 py-3 text-xs font-bold uppercase tracking-[0.05em] text-white no-underline transition hover:bg-[#493731]"
+              >
+                Get the guide →
+              </a>
+            </div>
+          </div>
+
+          {/* Paid guide */
+          /*
+          <div className="group overflow-hidden rounded-2xl border border-[#5b453e]/15 bg-white shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-lg">
+
+            <a
+              href={WHOP.researchGuide49}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block"
+            >
+              <img
+                src="/research-design-guide.jpg"
+                alt="Design Research That Holds Together research guide"
+                className="h-auto w-full object-cover transition duration-300 group-hover:scale-[1.02]"
+              />
+            </a>
+
+            <div className="p-6 text-center">
+              <p className="text-xs font-semibold uppercase tracking-[0.06em] text-[#9a8555]">
+                $49 · PDF
+              </p>
+
+              <h3 className="mt-3 font-display text-base font-bold text-[#5b453e]">
+                Design Research That Holds Together
+              </h3>
+
+              <a
+                href={WHOP.researchGuide49}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-5 inline-flex items-center justify-center rounded-full bg-[#5b453e] px-6 py-3 text-xs font-bold uppercase tracking-[0.05em] text-white no-underline transition hover:bg-[#493731]"
+              >
+                Get the guide →
+              </a>
+            </div>
+          </div>
+
+        </div>
+
+        {/* Decorative divider */
+        /*
+        <div className="mt-16 flex items-center justify-center gap-3">
+          <span className="h-3 w-3 rounded-full bg-[#7a4638]" />
+          <span className="h-3 w-3 rounded-full bg-[#7a4638]" />
+          <span className="h-3 w-3 rounded-full bg-[#7a4638]" />
+        </div>
+
+      </div>
+    </section>
+  );
+}
+*/
 
 
 function EcoRue() {
@@ -792,7 +1031,7 @@ function EcoRue() {
         {/* Right */}
         <div className="lg:text-center">
           <a
-            href="YOUR_ECORUE_URL"
+            href="https://www.ecorue.com/"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-block text-sm font-bold uppercase text-white no-underline hover:underline hover:underline-offset-4 sm:text-base"

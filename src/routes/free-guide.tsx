@@ -36,12 +36,11 @@ function FreeGuidePage() {
             Free · PDF
           </p>
           <a
-            href={DOWNLOADS.freeGuide}
-            download
-            className="mt-4 inline-flex items-center justify-center rounded-full bg-accent px-7 py-3.5 text-sm font-semibold uppercase tracking-[0.12em] text-accent-contrast no-underline transition-all hover:-translate-y-0.5 hover:opacity-90"
-          >
-            Download the guide ↓
-          </a>
+  href="https://drive.google.com/uc?export=download&id=1-L4xDUMSp3pFjr7oB5PUsYl-qz6zRSeL"
+  className="mt-4 inline-flex items-center justify-center rounded-full bg-accent px-7 py-3.5 text-sm font-semibold uppercase tracking-[0.12em] text-accent-contrast no-underline transition-all hover:-translate-y-0.5 hover:opacity-90"
+>
+  Download the guide ↓
+</a>
           <p className="mt-3 text-xs text-muted-foreground">
             If the download does not start, right-click the button and choose &ldquo;Save link
             as&rdquo;.
