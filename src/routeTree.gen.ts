@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as CallConfirmedRouteImport } from './routes/call-confirmed'
+import { Route as DeepReviewRouteImport } from './routes/deep-review'
 import { Route as FreeGuideRouteImport } from './routes/free-guide'
 import { Route as ResearchGuideRouteImport } from './routes/research-guide'
 
@@ -22,6 +23,11 @@ const IndexRoute = IndexRouteImport.update({
 const CallConfirmedRoute = CallConfirmedRouteImport.update({
   id: '/call-confirmed',
   path: '/call-confirmed',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DeepReviewRoute = DeepReviewRouteImport.update({
+  id: '/deep-review',
+  path: '/deep-review',
   getParentRoute: () => rootRouteImport,
 } as any)
 const FreeGuideRoute = FreeGuideRouteImport.update({
@@ -38,12 +44,14 @@ const ResearchGuideRoute = ResearchGuideRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/call-confirmed': typeof CallConfirmedRoute
+  '/deep-review': typeof DeepReviewRoute
   '/free-guide': typeof FreeGuideRoute
   '/research-guide': typeof ResearchGuideRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/call-confirmed': typeof CallConfirmedRoute
+  '/deep-review': typeof DeepReviewRoute
   '/free-guide': typeof FreeGuideRoute
   '/research-guide': typeof ResearchGuideRoute
 }
@@ -51,20 +59,30 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/call-confirmed': typeof CallConfirmedRoute
+  '/deep-review': typeof DeepReviewRoute
   '/free-guide': typeof FreeGuideRoute
   '/research-guide': typeof ResearchGuideRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/call-confirmed' | '/free-guide' | '/research-guide'
+  fullPaths:
+    '/' | '/call-confirmed' | '/deep-review' | '/free-guide' | '/research-guide'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/call-confirmed' | '/free-guide' | '/research-guide'
-  id: '__root__' | '/' | '/call-confirmed' | '/free-guide' | '/research-guide'
+  to:
+    '/' | '/call-confirmed' | '/deep-review' | '/free-guide' | '/research-guide'
+  id:
+    | '__root__'
+    | '/'
+    | '/call-confirmed'
+    | '/deep-review'
+    | '/free-guide'
+    | '/research-guide'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   CallConfirmedRoute: typeof CallConfirmedRoute
+  DeepReviewRoute: typeof DeepReviewRoute
   FreeGuideRoute: typeof FreeGuideRoute
   ResearchGuideRoute: typeof ResearchGuideRoute
 }
@@ -83,6 +101,13 @@ declare module '@tanstack/react-router' {
       path: '/call-confirmed'
       fullPath: '/call-confirmed'
       preLoaderRoute: typeof CallConfirmedRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/deep-review': {
+      id: '/deep-review'
+      path: '/deep-review'
+      fullPath: '/deep-review'
+      preLoaderRoute: typeof DeepReviewRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/free-guide': {
@@ -105,6 +130,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   CallConfirmedRoute: CallConfirmedRoute,
+  DeepReviewRoute: DeepReviewRoute,
   FreeGuideRoute: FreeGuideRoute,
   ResearchGuideRoute: ResearchGuideRoute,
 }

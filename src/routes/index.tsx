@@ -2,7 +2,7 @@ import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { useState } from "react";
 import { PageShell } from "@/components/site/Layout";
 import { Arrow, Card, Check, Eyebrow, ExternalCta, Section } from "@/components/site/ui";
-import { WHOP } from "@/lib/links";
+import { SUBSTACK,WHOP } from "@/lib/links";
 
 const TITLE = "Dr. Ruth Mwongeli Muthoka — Research Design for Researchers, Founders & R&D Teams";
 const DESC =
@@ -55,39 +55,133 @@ function Home() {
   return (
     <PageShell>
       <Hero />
+      <FreeResearchGuide />
       <SoundFamiliar />
       <MeetRuth />
+      <ProfileLinks />
       <WaysToWork />
       <DeepReview />
+      <TwoWaysToWork />
       <HelpWith />
       <Resources />
       <EcoRue />
+      <WritingSection />
     </PageShell>
   );
 }
 
 function Hero() {
   return (
-    <Section className="pt-14 sm:pt-20">
-      <Eyebrow>Research Design · Researchers, Founders &amp; R&amp;D Teams</Eyebrow>
-      <p className="mt-6 text-sm font-semibold uppercase tracking-[0.18em] text-accent-foreground">
-        Free Research Guide
-      </p>
-      <h1 className="mt-3 text-4xl leading-[1.08] sm:text-6xl">Before You Choose a Method</h1>
-      <p className="mt-5 max-w-2xl text-lg leading-relaxed text-muted-foreground">
-        How to tell whether you have a real research problem, turn it into an answerable question,
-        and avoid building a study around the wrong thing.
-      </p>
+    <section className="bg-[#5b453e] text-white">
+<div className="mx-auto grid w-full max-w-[1460px] gap-12 px-6 pt-8 pb-14 sm:px-10 sm:pt-10 sm:pb-16 lg:grid-cols-[1.8fr_0.9fr] lg:items-center lg:gap-20 lg:px-16 lg:pt-12 lg:pb-20">
+        {/* Left side */}
+        <div className="max-w-[900px]">
 
-      <div id="free-guide" className="mt-10 max-w-xl scroll-mt-24">
-        <FreeGuideForm />
+          <p className="text-xs font-bold uppercase tracking-[0.03em] text-white sm:text-sm">
+            Research Design · Researchers, Founders &amp; R&amp;D Teams
+          </p>
+
+          <h1 className="mt-10 max-w-[760px] font-display text-[2rem] font-bold leading-[1.18] tracking-[-0.02em] text-white sm:text-[2.4rem] lg:text-[3rem]">
+  Know what you are
+  <br className="hidden sm:block" /> actually trying to find out.
+  <br />
+  Build the research around that.
+</h1>
+
+          <p className="mt-6 max-w-[820px] text-base leading-[1.6] text-white/90 sm:text-[1.05rem] lg:text-[1.1rem]">
+            You can have a promising topic, a stack of papers, and a method in
+            mind and still be building the study around the wrong question. I
+            work with researchers, technical founders, and R&amp;D teams to
+            clarify the problem, sharpen the research question, choose methods
+            that can actually answer it, and work out what the results really
+            support.
+          </p>
+
+          <div className="mt-9 flex flex-wrap gap-4">
+            <a
+              href={WHOP}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex min-h-14 items-center justify-center rounded-lg bg-[#a68b4d] px-6 text-sm font-bold uppercase tracking-[0.01em] text-white no-underline transition hover:bg-[#947a42]"
+            >
+              Book a call with me
+            </a>
+
+            <a
+              href={SUBSTACK}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex min-h-14 items-center justify-center rounded-lg border border-white/80 bg-transparent px-6 text-sm font-bold uppercase tracking-[0.01em] text-white no-underline transition hover:bg-white hover:text-[#5b453e]"
+            >
+              The Deep Review
+            </a>
+          </div>
+        </div>
+
+        {/* Right side */}
+        <div className="flex justify-center lg:justify-end">
+          <div className="w-full max-w-[460px] overflow-hidden">
+            <img
+              src="/ruth-hero.jpg"
+              alt="Dr. Ruth Mwongeli Muthoka"
+              className="h-[520px] w-full object-cover object-center sm:h-[620px] lg:h-[580px]"
+            />
+          </div>
+        </div>
+
       </div>
+    </section>
+  );
+}
 
-      <p className="mt-10 max-w-3xl border-t border-border pt-6 text-xs font-medium uppercase tracking-[0.14em] text-muted-foreground">
-        PhD Mechanical Engineering / 8+ Years in Research / 22+ Research Publications /
-        Experimental + Computational Research / Founder, EcoRue
-      </p>
-    </Section>
+function FreeResearchGuide() {
+  return (
+    <>
+      {/* Free research guide */}
+      <section className="bg-[#9a8555] text-white">
+        <div className="mx-auto grid w-full max-w-[1460px] gap-10 px-6 py-14 sm:px-10 lg:grid-cols-[1.7fr_0.8fr] lg:items-center lg:px-16 lg:py-12">
+
+          {/* Left */}
+          <div>
+            <p className="text-xs font-bold uppercase tracking-[0.03em] sm:text-sm">
+              Free Research Guide
+            </p>
+
+            <h2 className="mt-7 font-display text-sm font-bold text-white sm:text-base">
+              Before You Choose a Method
+            </h2>
+
+            <p className="mt-7 max-w-[850px] text-xs leading-[1.7] text-white/95 sm:text-sm">
+              How to tell whether you have a real research problem, turn it
+              into an answerable question, and avoid building a study around
+              the wrong thing.
+            </p>
+          </div>
+
+          {/* Right */}
+          <div className="lg:flex lg:justify-center">
+            <a
+              href="/free-guide"
+              className="inline-flex items-center gap-2 font-display text-base font-bold uppercase text-white no-underline transition-opacity hover:opacity-75"
+            >
+              Get the free guide
+              <span aria-hidden="true">→</span>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* Credentials strip */}
+      <section className="bg-[#5b453e] text-white">
+        <div className="mx-auto w-full max-w-[1460px] px-6 py-7 text-center sm:px-10 lg:px-16">
+          <p className="font-display text-[0.7rem] font-bold leading-relaxed sm:text-xs lg:text-sm">
+            PhD Mechanical Engineering / 8+ Years in Research / 22+ Research
+            Publications / Experimental + Computational Research / Founder,
+            EcoRue
+          </p>
+        </div>
+      </section>
+    </>
   );
 }
 
@@ -132,317 +226,602 @@ function FreeGuideForm() {
 
 function SoundFamiliar() {
   return (
-    <Section tone="alt">
-      <Eyebrow>Sound familiar?</Eyebrow>
-      <h2 className="mt-4 max-w-3xl text-3xl leading-tight sm:text-4xl">
-        Your research is moving. But something still doesn&apos;t quite hold together.
-      </h2>
-      <ul className="mt-8 grid gap-4 sm:grid-cols-2">
-        {struggles.map((s) => (
-          <li
-            key={s}
-            className="rounded-xl border border-accent/20 bg-card p-5 text-[0.95rem] leading-relaxed"
-          >
-            {s}
-          </li>
-        ))}
-      </ul>
-      <p className="mt-8 max-w-3xl border-l-2 border-accent/50 pl-5 text-[0.95rem] italic leading-relaxed text-muted-foreground">
-        Sometimes the difficulty is not a lack of effort. The problem, question, method, and
-        interpretation have simply stopped lining up somewhere along the way. An outside research
-        perspective can help you see where the logic is breaking, what you may be assuming, and what
-        needs attention before you keep building on it.
-      </p>
-    </Section>
+    <section className="bg-white text-[#5b453e]">
+      <div className="mx-auto w-full max-w-[900px] px-6 py-14 sm:px-10 sm:py-16">
+
+        {/* Heading */}
+        <div className="text-center">
+          <p className="text-xs font-medium uppercase tracking-[0.03em] text-[#5b453e] sm:text-sm">
+            Sound familiar?
+          </p>
+
+          <h2 className="mx-auto mt-8 max-w-[680px] font-display text-[1.5rem] font-bold leading-[1.2] tracking-[-0.02em] text-[#5b453e] sm:text-[1.8rem]">
+  Your research is moving. But
+  <br className="hidden sm:block" />
+  something still doesn&apos;t quite
+  <br className="hidden sm:block" />
+  hold together.
+</h2>
+</div>
+
+        {/* Struggles */}
+        <ul className="mx-auto mt-10 max-w-[720px] space-y-7">
+          {struggles.map((struggle) => (
+            <li
+              key={struggle}
+              className="flex items-start gap-2 text-sm leading-[1.6] text-[#5b453e] sm:text-[0.95rem]"
+            >
+              <span className="mt-[1px] shrink-0">–</span>
+              <span>{struggle}</span>
+            </li>
+          ))}
+        </ul>
+
+        {/* Supporting note */}
+        <p className="mx-auto mt-10 max-w-[720px] text-center text-sm italic leading-[1.7] text-[#5b453e] sm:text-[0.95rem]">
+  Sometimes the difficulty is not a lack of effort. The problem,
+  question, method, and interpretation have simply stopped lining up
+  somewhere along the way. An outside research perspective can help
+  you see where the logic is breaking, what you may be assuming, and
+  what needs attention before you keep building on it.
+</p>
+
+      </div>
+    </section>
+  );
+}
+function MeetRuth() {
+  return (
+    <section className="bg-[#5b453e] text-white">
+<div className="mx-auto grid w-full max-w-[1600px] gap-12 px-6 py-8 sm:px-10 lg:grid-cols-[340px_1fr] lg:gap-[90px] lg:px-[92px] lg:py-8">
+        {/* Left image */}
+        <div className="mt-0 lg:mt-[94px]">
+          <img
+            src="/ruth-research.JPG"
+            alt="Dr. Ruth Mwongeli Muthoka"
+            className="h-auto w-full object-cover object-center lg:h-[340px] lg:w-[340px]"
+            />
+        </div>
+
+        {/* Right content */}
+        <div className="max-w-[900px]">
+
+          <p className="text-sm font-bold text-white">
+            Meet Ruth
+          </p>
+
+          <h2 className="mt-10 max-w-[850px] font-display text-[1.3rem] font-bold leading-[1.35] text-white sm:text-[1.55rem]">
+            I have spent years learning that good research starts long
+            before the method.
+          </h2>
+
+          <div className="mt-8 space-y-7 text-[0.95rem] leading-[1.55] text-white/95 sm:text-base">
+
+            <p>
+              I am Dr. Ruth Mwongeli Muthoka, a mechanical engineer and
+              materials scientist. I have spent more than eight years working
+              across experimental and computational research, from designing
+              studies and running experiments to modeling materials,
+              interpreting results, publishing research, and figuring out what
+              to do when the work does not behave the way you expected.
+            </p>
+
+            <p>
+              I know what it is to spend weeks following a question before
+              realizing that the real problem was somewhere earlier. I know
+              what it is to repeat an experiment because the result makes no
+              sense, read paper after paper without feeling any closer to the
+              answer, and build a technically sound method only to discover
+              that it does not quite answer the question you thought you were
+              asking.
+            </p>
+
+            <p>
+              Those experiences changed the way I think about research. A good
+              study is not simply a collection of correct methods. The problem,
+              question, investigation, results, and interpretation have to
+              belong together. When they do not, working harder rarely fixes
+              the problem. You have to find where the logic stopped holding.
+            </p>
+
+            <p>
+              That is the part of research I care most about teaching. I help
+              researchers, technical founders, and R&amp;D teams think through
+              what they are actually trying to understand, whether the question
+              is worth pursuing, what kind of investigation can answer it, what
+              the results really allow them to conclude, and what should happen
+              next.
+            </p>
+
+          </div>
+        </div>
+      </div>
+    </section>
   );
 }
 
-function MeetRuth() {
+function ProfileLinks() {
   return (
-    <Section>
-      <Eyebrow>Meet Ruth</Eyebrow>
-      <h2 className="mt-4 max-w-3xl text-3xl leading-tight sm:text-4xl">
-        I have spent years learning that good research starts long before the method.
-      </h2>
-      <div className="mt-8 grid gap-5 text-[0.98rem] leading-relaxed text-muted-foreground sm:grid-cols-2">
-        <p>
-          I am Dr. Ruth Mwongeli Muthoka, a mechanical engineer and materials scientist. I have
-          spent more than eight years working across experimental and computational research, from
-          designing studies and running experiments to modeling materials, interpreting results,
-          publishing research, and figuring out what to do when the work does not behave the way you
-          expected.
-        </p>
-        <p>
-          I know what it is to spend weeks following a question before realizing that the real
-          problem was somewhere earlier. I know what it is to repeat an experiment because the
-          result makes no sense, read paper after paper without feeling any closer to the answer,
-          and build a technically sound method only to discover that it does not quite answer the
-          question you thought you were asking.
-        </p>
-        <p>
-          Those experiences changed the way I think about research. A good study is not simply a
-          collection of correct methods. The problem, question, investigation, results, and
-          interpretation have to belong together. When they do not, working harder rarely fixes the
-          problem. You have to find where the logic stopped holding.
-        </p>
-        <p>
-          That is the part of research I care most about teaching. I help researchers, technical
-          founders, and R&amp;D teams think through what they are actually trying to understand,
-          whether the question is worth pursuing, what kind of investigation can answer it, what the
-          results really allow them to conclude, and what should happen next. If your research feels
-          stuck, unclear, too broad, or technically busy without becoming more convincing, that is
-          exactly the kind of problem I like working through.
-        </p>
+    <section className="bg-white text-[#5b453e]">
+      <div className="mx-auto grid w-full max-w-[1200px] grid-cols-1 gap-5 px-6 py-8 text-center sm:grid-cols-2 sm:px-10 lg:px-16">
+
+        <a
+          href="https://www.linkedin.com/in/ruthmwongelimuthoka/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="font-display text-sm font-bold text-[#5b453e]  transition-opacity hover:underline sm:text-base"
+        >
+          LinkedIn ↗
+        </a>
+
+        <a
+          href="YOUR_GOOGLE_SCHOLAR_URL"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="font-display text-sm font-bold text-[#5b453e] no-underline transition-opacity hover:underline sm:text-base"
+        >
+          Google Scholar ↗
+        </a>
+
       </div>
-    </Section>
+    </section>
   );
 }
 
 function WaysToWork() {
   return (
-    <Section id="work" tone="deep" className="scroll-mt-20">
-      <Eyebrow>
-        <span className="text-primary-foreground/70">Two ways to work with me</span>
-      </Eyebrow>
-      <h2 className="mt-4 max-w-3xl text-3xl leading-tight sm:text-4xl">
-        Bring me the research problem you keep coming back to.
-      </h2>
-      <p className="mt-5 max-w-3xl text-[0.98rem] leading-relaxed text-primary-foreground/80">
-        You may have a research idea that is still too vague, a question that does not quite work, a
-        methodology problem, confusing results, an experiment that keeps failing, or several
-        possible directions and no clear way to choose between them. Bring it. We will spend 60
-        minutes working through where the research is getting stuck and what makes sense to do next.
-      </p>
-      <div className="mt-9 flex flex-wrap items-center gap-4">
-        <ExternalCta href={WHOP.bookCall150} variant="primary">
-          Book a call with me · 60 min · $150
-        </ExternalCta>
-        <span className="text-xs uppercase tracking-[0.14em] text-primary-foreground/60">
-          01 · Book a Call with Me
-        </span>
+    <section
+      id="work"
+      className="scroll-mt-20 bg-[#9a8555] text-white"
+    >
+      <div className="mx-auto flex min-h-[500px] w-full max-w-[1500px] flex-col items-center justify-center px-6 py-20 text-center sm:px-10 lg:px-16">
+
+        <h2 className="max-w-[1050px] font-display text-[1.6rem] font-bold leading-[1.25] text-white sm:text-[1.9rem] lg:text-[2.1rem]">
+          Bring me the research problem you keep coming back to.
+        </h2>
+
+        <p className="mt-6 max-w-[1300px] text-sm leading-[1.55] text-white/95 sm:text-base lg:text-[1.05rem]">
+          You may have a research idea that is still too vague, a question that
+          does not quite work, a methodology problem, confusing results, an
+          experiment that keeps failing, or several possible directions and no
+          clear way to choose between them. Bring it. We will spend 60 minutes
+          working through where the research is getting stuck and what makes
+          sense to do next.
+        </p>
+
+        <a
+          href={WHOP.bookCall150}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="mt-8 inline-flex items-center justify-center rounded-lg bg-white px-5 py-3 text-sm font-bold text-[#5b453e] no-underline transition hover:bg-white/90"
+        >
+          Book a Call with Me · 60 min · $150
+        </a>
+
       </div>
-    </Section>
+    </section>
+  );
+}
+function DeepReview() {
+  return (
+    <section className="bg-white text-[#5b453e]">
+      <div className="mx-auto w-full max-w-[1250px] px-6 py-14 sm:px-10 lg:px-12 lg:py-16">
+
+        {/* Introduction */}
+        <div className="mx-auto max-w-[740px]">
+          <p className="text-center text-xs font-bold uppercase tracking-[0.03em]">
+            When a call isn&apos;t enough
+          </p>
+
+          <h2 className="mt-4 text-center font-display text-[1.7rem] font-bold leading-tight sm:text-[2rem]">
+            The Deep Review
+          </h2>
+
+          <p className="mt-8 text-sm font-bold leading-relaxed sm:text-[0.95rem]">
+            Let me spend proper time with the research before you decide what
+            to do next.
+          </p>
+
+          <p className="mt-6 text-sm leading-[1.55] sm:text-[0.95rem]">
+            Some research problems cannot be understood responsibly in a
+            60-minute conversation. You may need me to read the proposal,
+            follow the research logic, look closely at the methodology,
+            examine results or model assumptions, or understand how several
+            pieces of the work fit together.
+          </p>
+
+          <p className="mt-6 text-sm leading-[1.55] sm:text-[0.95rem]">
+            That is what The Deep Review is for. You send me the agreed
+            material. I spend proper time with it, then give you an independent
+            research view of where the work is strong, where the logic may be
+            breaking, what I would question, and what deserves attention next.
+          </p>
+        </div>
+
+        {/* What's included / What you leave with */}
+        <div className="mt-12 grid gap-10 lg:grid-cols-2 lg:gap-0">
+
+          {/* Left */}
+          <div className="lg:border-r lg:border-[#5b453e]/20 lg:pr-16">
+            <h3 className="text-xs font-bold uppercase tracking-[0.02em]">
+              What&apos;s included
+            </h3>
+
+            <ul className="mt-7 space-y-1 text-sm leading-[1.45] sm:text-[0.9rem]">
+              <li>✓ A short scoping call to agree on the research problem and scope</li>
+              <li>✓ Review of the agreed research materials</li>
+              <li>
+                ✓ Independent assessment of the problem, question, design,
+                assumptions, results, interpretation, and relevant gaps
+              </li>
+              <li>
+                ✓ A written Deep Review setting out my findings, concerns, and
+                recommended priorities
+              </li>
+              <li>✓ A findings call to work through the review together</li>
+            </ul>
+
+            <p className="mt-7 font-display text-[1.6rem] font-bold">
+              $1,500
+            </p>
+
+            <p className="mt-5 max-w-[470px] text-xs leading-[1.55] sm:text-sm">
+              <strong>Application required.</strong> If your application is a
+              fit, we start with a $150 scoping call. If we proceed with the
+              Deep Review, the $150 is credited toward the $1,500 fee.
+            </p>
+
+            <a
+              href="/deep-review/apply"
+              className="mt-7 inline-block text-xs font-bold uppercase tracking-[0.02em] text-[#5b453e] no-underline hover:underline hover:underline-offset-4"
+            >
+              Learn more
+            </a>
+          </div>
+
+          {/* Right */}
+          <div className="lg:pl-16">
+            <h3 className="text-xs font-bold uppercase tracking-[0.02em]">
+              What you leave with
+            </h3>
+
+            <ul className="mt-7 space-y-1 text-sm leading-[1.45] sm:text-[0.9rem]">
+              <li>
+                ✓ A clearer view of whether the research holds together from
+                problem to conclusion
+              </li>
+
+              <li>✓ The parts of the work that are already well supported</li>
+
+              <li>
+                ✓ Assumptions, methodological issues, or gaps that may be
+                weakening the study
+              </li>
+
+              <li>
+                ✓ A clearer understanding of what your results do and do not
+                allow you to conclude
+              </li>
+
+              <li>
+                ✓ The research questions or decisions that deserve attention
+                next
+              </li>
+
+              <li>
+                ✓ A written review you can return to after the engagement
+              </li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+    </section>
   );
 }
 
-function DeepReview() {
+
+function TwoWaysToWork() {
   return (
-    <Section tone="alt">
-      <Eyebrow>When a call isn&apos;t enough</Eyebrow>
-      <h2 className="mt-4 text-3xl leading-tight sm:text-4xl">The Deep Review</h2>
-      <p className="mt-4 max-w-3xl text-lg font-medium">
-        Let me spend proper time with the research before you decide what to do next.
-      </p>
-      <div className="mt-6 grid gap-5 text-[0.98rem] leading-relaxed text-muted-foreground sm:grid-cols-2">
-        <p>
-          Some research problems cannot be understood responsibly in a 60-minute conversation. You
-          may need me to read the proposal, follow the research logic, look closely at the
-          methodology, examine results or model assumptions, or understand how several pieces of the
-          work fit together.
-        </p>
-        <p>
-          That is what The Deep Review is for. You send me the agreed material. I spend proper time
-          with it, then give you an independent research view of where the work is strong, where the
-          logic may be breaking, what I would question, and what deserves attention next.
-        </p>
-      </div>
+    <section className="bg-[#5b453e] text-white">
+      <div className="mx-auto w-full max-w-[1100px] px-6 py-10 sm:px-10 lg:py-12">
 
-      <div className="mt-9 grid gap-5 sm:grid-cols-2">
-        <Card>
-          <Eyebrow>What&apos;s included</Eyebrow>
-          <ul className="mt-4 space-y-3">
-            <Check>A short scoping call to agree on the research problem and scope</Check>
-            <Check>Review of the agreed research materials</Check>
-            <Check>
-              Independent assessment of the problem, question, design, assumptions, results,
-              interpretation, and relevant gaps
-            </Check>
-            <Check>
-              A written Deep Review setting out my findings, concerns, and recommended priorities
-            </Check>
-            <Check>A findings call to work through the review together</Check>
-          </ul>
-        </Card>
-        <Card>
-          <Eyebrow>What you leave with</Eyebrow>
-          <ul className="mt-4 space-y-3">
-            <Check>
-              A clearer view of whether the research holds together from problem to conclusion
-            </Check>
-            <Check>The parts of the work that are already well supported</Check>
-            <Check>
-              Assumptions, methodological issues, or gaps that may be weakening the study
-            </Check>
-            <Check>
-              A clearer understanding of what your results do and do not allow you to conclude
-            </Check>
-            <Check>The research questions or decisions that deserve attention next</Check>
-            <Check>A written review you can return to after the engagement</Check>
-          </ul>
-        </Card>
-      </div>
+        <h2 className="text-center text-xs font-bold uppercase tracking-[0.02em] text-white">
+          Two ways to work with me
+        </h2>
 
-      <Card className="mt-6">
-        <p className="font-display text-4xl font-semibold text-foreground">$1,500</p>
-        <p className="mt-3 max-w-2xl text-[0.95rem] leading-relaxed text-muted-foreground">
-          <strong className="text-foreground">Application required.</strong> If your application is
-          a fit, we start with a $150 scoping call. If we proceed with the Deep Review, the $150 is
-          credited toward the $1,500 fee.
-        </p>
-        <div className="mt-6 flex flex-wrap items-center gap-4">
-          <a
-            href="/deep-review/apply"
-            className="inline-flex items-center justify-center rounded-full bg-accent px-7 py-3.5 text-sm font-semibold uppercase tracking-[0.12em] text-accent-contrast no-underline transition-all hover:-translate-y-0.5 hover:opacity-90"
-          >
-            Apply for the Deep Review →
-          </a>
-          <span className="text-xs text-muted-foreground">
-            I read every application myself. You&apos;ll hear from me within 2 business days.
-          </span>
+        <div className="mx-auto mt-10 grid max-w-[700px] gap-10 sm:grid-cols-2 sm:gap-0">
+
+          {/* 01 */}
+          <div className="text-center sm:border-l sm:border-r sm:border-white/40 sm:px-12">
+                      <p className="text-sm font-bold">
+              01
+            </p>
+
+            <h3 className="mt-2 font-display text-sm font-bold">
+              Book a Call with Me
+            </h3>
+
+            <p className="mt-7 text-xs text-white/90">
+              60 minutes · $150
+            </p>
+
+            <a
+              href={WHOP.bookCall150}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-1 inline-block text-xs font-bold uppercase text-white no-underline hover:underline hover:underline-offset-4"
+            >
+              Book a call →
+            </a>
+          </div>
+
+          {/* 02 */}
+          <div className="text-center sm:border-r sm:border-white/40 sm:px-12">
+            <p className="text-sm font-bold">
+              02
+            </p>
+
+            <h3 className="mt-2 font-display text-sm font-bold">
+              The Deep Review
+            </h3>
+
+            <p className="mt-7 text-xs font-bold text-white/90">
+              $1,500
+            </p>
+
+            <a
+              href="/deep-review/apply"
+              className="mt-1 inline-block text-xs font-bold text-white no-underline hover:underline hover:underline-offset-4"
+            >
+              Learn more
+            </a>
+          </div>
+
         </div>
-      </Card>
-    </Section>
+      </div>
+    </section>
   );
 }
 
 function HelpWith() {
   return (
-    <Section>
-      <Eyebrow>What I can help with</Eyebrow>
-      <div className="mt-8 grid gap-5 sm:grid-cols-2">
-        {helpWith.map((h) => (
-          <Card key={h.n}>
-            <p className="font-display text-sm font-semibold text-accent-foreground">{h.n}</p>
-            <h3 className="mt-2 text-xl">{h.title}</h3>
-            <p className="mt-3 text-[0.95rem] leading-relaxed text-muted-foreground">{h.body}</p>
-          </Card>
-        ))}
+    <section className="bg-white text-[#5b453e]">
+      <div className="mx-auto w-full max-w-[1450px] px-6 py-12 sm:px-10 lg:px-16 lg:py-14">
+
+        <h2 className="text-center font-display text-[1.3rem] font-bold uppercase tracking-[0.01em] sm:text-[1.5rem]">
+          What I can help with
+        </h2>
+
+        <div className="mt-12 grid gap-10 sm:grid-cols-2 lg:grid-cols-4 lg:gap-0">
+          {helpWith.map((h, index) => (
+            <div
+              key={h.n}
+              className={`lg:px-12 ${
+                index !== helpWith.length - 1
+                  ? "lg:border-r lg:border-[#5b453e]/15"
+                  : ""
+              }`}
+            >
+              <p className="text-sm text-[#5b453e]/80">
+                {h.n}
+              </p>
+
+              <h3 className="mt-2 max-w-[220px] font-display text-[1rem] font-bold leading-[1.4] text-[#5b453e]">
+                {h.title}
+              </h3>
+
+              <p className="mt-6 max-w-[230px] text-sm leading-[1.5] text-[#5b453e]/85">
+                {h.body}
+              </p>
+            </div>
+          ))}
+        </div>
+
       </div>
-    </Section>
+    </section>
   );
 }
 
 function Resources() {
   return (
-    <Section id="resources" tone="alt" className="scroll-mt-20">
-      <Eyebrow>Resources</Eyebrow>
-      <h2 className="mt-4 text-3xl leading-tight sm:text-4xl">
-        The research guides I wish I had earlier.
-      </h2>
-      <p className="mt-4 max-w-3xl text-[0.98rem] leading-relaxed text-muted-foreground">
-        Practical guides and tools for finding the real research problem, asking better questions,
-        choosing methods that actually fit the question, making sense of results, and knowing what
-        to do when the work gets messy. Some are free, some go deeper. Start with the problem you
-        are trying to solve.
-      </p>
+    <section
+      id="resources"
+      className="scroll-mt-20 border-t-2 border-[#5b453e] bg-white text-[#5b453e]"
+    >
+      <div className="mx-auto w-full max-w-[1200px] px-6 py-10 sm:px-10 lg:px-12 lg:py-12">
 
-      <div className="mt-9 grid gap-5 lg:grid-cols-2">
-        <Card>
-          <Eyebrow>Start here · Before the method</Eyebrow>
-          <h3 className="mt-3 text-2xl">Before You Choose a Method</h3>
-          <p className="mt-3 text-[0.95rem] leading-relaxed text-muted-foreground">
-            This guide is designed to help you work out whether you actually have a research
-            problem, whether the question can be answered, and what needs to be clear before you
-            choose a method.
+        {/* Section heading */}
+        <div className="text-center">
+          <p className="text-lg font-bold text-[#5b453e]">
+            Resources
           </p>
-          <p className="mt-5 text-xs font-semibold uppercase tracking-[0.14em]">Inside:</p>
-          <ul className="mt-3 space-y-2.5 text-muted-foreground">
-            <Arrow>The difference between a topic, a problem, a gap, and a research question</Arrow>
-            <Arrow>Bad, mediocre, and strong examples, with explanations</Arrow>
-            <Arrow>
-              The Research Spine, a seven-part way to check whether your study holds together before
-              you start
-            </Arrow>
-            <Arrow>A nine-question Research Question Stress Test</Arrow>
-            <Arrow>
-              A Method-Last Test to stop you choosing methods because they are familiar,
-              fashionable, or available
-            </Arrow>
-            <Arrow>Worked cases from experimental, computational, and people-based research</Arrow>
-            <Arrow>
-              A one-page Research Readiness Check you can use before writing a proposal or starting
-              data collection
-            </Arrow>
-            <Arrow>
-              A short section on using AI without handing over the thinking that makes you a
-              researcher
-            </Arrow>
-          </ul>
-          <p className="mt-6 text-sm font-semibold tracking-wide text-accent-foreground">
-            FREE · PDF
-          </p>
-          <a
-            href="/#free-guide"
-            className="mt-3 inline-flex items-center justify-center rounded-full bg-accent px-7 py-3.5 text-sm font-semibold uppercase tracking-[0.12em] text-accent-contrast no-underline transition-all hover:-translate-y-0.5 hover:opacity-90"
-          >
-            Get the guide ↗
-          </a>
-        </Card>
 
-        <Card>
-          <Eyebrow>Research design guide</Eyebrow>
-          <h3 className="mt-3 text-2xl">Design Research That Holds Together</h3>
-          <p className="mt-3 text-[0.95rem] leading-relaxed text-muted-foreground">
-            A practical research-design handbook for moving from the problem through the question,
-            literature, methodology, investigation, interpretation, and the conclusions you can
-            responsibly defend.
-          </p>
-          <p className="mt-5 text-xs font-semibold uppercase tracking-[0.14em]">Inside:</p>
-          <ul className="mt-3 space-y-2.5 text-muted-foreground">
-            <Arrow>
-              A practical process for moving from a vague idea to a research problem worth
-              investigating
-            </Arrow>
-            <Arrow>
-              How to read literature to change your understanding rather than merely collect
-              citations
-            </Arrow>
-            <Arrow>
-              How to design research questions that are answerable, consequential, and appropriately
-              scoped
-            </Arrow>
-            <Arrow>How to decide what kind of evidence would actually answer the question</Arrow>
-            <Arrow>
-              How to choose methods from the question rather than force questions around familiar
-              methods
-            </Arrow>
-            <Arrow>Experimental, computational, and people-based worked cases throughout</Arrow>
-            <Arrow>
-              Tools for assumptions, variables, measurement quality, controls, comparison, bias,
-              uncertainty, and validity
-            </Arrow>
-            <Arrow>
-              A section on exploratory vs confirmatory work, preregistration, and honest
-              interpretation
-            </Arrow>
-            <Arrow>How to diagnose failed, confusing, or inconclusive research</Arrow>
-          </ul>
-          <p className="mt-6 text-sm font-semibold tracking-wide text-accent-foreground">
-            $49 · PDF
-          </p>
-          <ExternalCta href={WHOP.researchGuide49} className="mt-3">
-            Get the guide ↗
-          </ExternalCta>
-        </Card>
+          <h2 className="mt-8 font-display text-lg font-bold leading-tight text-[#5b453e] sm:text-[1.2rem]">
+            The research guides I wish I had earlier.
+          </h2>
+
+          <p className="mx-auto mt-6 max-w-[1100px] text-[0.95rem] font-semibold leading-[1.6] text-[#5b453e]/90 sm:text-base lg:text-[1.05rem]">
+  Practical guides and tools for finding the real research problem,
+  asking better questions, choosing methods that actually fit the
+  question, making sense of results, and knowing what to do when the
+  work gets messy. Some are free, some go deeper. Start with the
+  problem you are trying to solve.
+</p>
+        </div>
+
+        {/* Guides */}
+        <div className="mt-10 grid gap-12 lg:grid-cols-2 lg:gap-0">
+
+          {/* Free guide */}
+          <div className="lg:border-r lg:border-[#5b453e]/60 lg:pr-12">
+
+            <p className="text-[0.95rem] uppercase tracking-[0.02em] text-[#5b453e]/80">
+              Start here · Before the method
+            </p>
+
+            <h3 className="mt-5 font-display text-sm font-bold text-[#5b453e]">
+              Before You Choose a Method
+            </h3>
+
+            <p className="mt-6 text-base leading-[1.5] text-[#5b453e]/90">
+              This guide is designed to help you work out whether you actually
+              have a research problem, whether the question can be answered,
+              and what needs to be clear before you choose a method.
+            </p>
+
+            <p className="mt-6 text-base text-[#5b453e]">
+              Inside:
+            </p>
+
+            <ul className="mt-5 space-y-1 text-base leading-[1.45] text-[#5b453e]/90">
+              <li>→ The difference between a topic, a problem, a gap, and a research question</li>
+              <li>→ Bad, mediocre, and strong examples, with explanations</li>
+              <li>→ The Research Spine, a seven-part way to check whether your study holds together before you start</li>
+              <li>→ A nine-question Research Question Stress Test</li>
+              <li>→ A Method-Last Test to stop you choosing methods because they are familiar, fashionable, or available</li>
+              <li>→ Worked cases from experimental, computational, and people-based research</li>
+              <li>→ A one-page Research Readiness Check you can use before writing a proposal or starting data collection</li>
+              <li>→ A short section on using AI without handing over the thinking that makes you a researcher</li>
+            </ul>
+
+            <p className="mt-6 text-[0.95rem] font-bold uppercase">
+              Free · PDF
+            </p>
+
+            <a
+              href="/#free-guide"
+              className="mt-1 inline-block text-[0.95rem] font-bold uppercase text-[#5b453e] no-underline hover:underline hover:underline-offset-4"
+            >
+              Get the guide ↗
+            </a>
+          </div>
+
+          {/* Paid guide */}
+          <div className="lg:pl-12">
+
+            <p className="text-[0.95rem] uppercase tracking-[0.02em] text-[#5b453e]/80">
+              Research design guide
+            </p>
+
+            <h3 className="mt-5 font-display text-sm font-bold text-[#5b453e]">
+              Design Research That Holds Together
+            </h3>
+
+            <p className="mt-6 text-base leading-[1.5] text-[#5b453e]/90">
+              A practical research-design handbook for moving from the problem
+              through the question, literature, methodology, investigation,
+              interpretation, and the conclusions you can responsibly defend.
+            </p>
+
+            <p className="mt-6 text-base text-[#5b453e]">
+              Inside:
+            </p>
+
+            <ul className="mt-5 space-y-1 text-base leading-[1.45] text-[#5b453e]/90">
+              <li>→ A practical process for moving from a vague idea to a research problem worth investigating</li>
+              <li>→ How to read literature to change your understanding rather than merely collect citations</li>
+              <li>→ How to design research questions that are answerable, consequential, and appropriately scoped</li>
+              <li>→ How to decide what kind of evidence would actually answer the question</li>
+              <li>→ How to choose methods from the question rather than force questions around familiar methods</li>
+              <li>→ Experimental, computational, and people-based worked cases throughout</li>
+              <li>→ Tools for assumptions, variables, measurement quality, controls, comparison, bias, uncertainty, and validity</li>
+              <li>→ A section on exploratory vs confirmatory work, preregistration, and honest interpretation</li>
+              <li>→ How to diagnose failed, confusing, or inconclusive research</li>
+            </ul>
+
+            <p className="mt-6 text-[0.95rem] font-bold uppercase">
+              $49 · PDF
+            </p>
+
+            <a
+              href={WHOP.researchGuide49}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-1 inline-block text-[0.95rem] font-bold uppercase text-[#5b453e] no-underline hover:underline hover:underline-offset-4"
+            >
+              Get the guide ↗
+            </a>
+          </div>
+
+        </div>
+
+        {/* Decorative divider */}
+<div className="mt-16 flex items-center justify-center gap-3">
+  <span className="h-3 w-3 rounded-full bg-[#7a4638]" />
+  <span className="h-3 w-3 rounded-full bg-[#7a4638]" />
+  <span className="h-3 w-3 rounded-full bg-[#7a4638]" />
+</div>
       </div>
-    </Section>
+    </section>
   );
 }
 
+
 function EcoRue() {
   return (
-    <Section>
-      <div className="max-w-3xl">
-        <Eyebrow>EcoRue</Eyebrow>
-        <p className="mt-4 text-[0.98rem] leading-relaxed text-muted-foreground">
-          EcoRue grew out of a problem I kept seeing in research: good ideas can stall long before
-          they reach practical use, not because the thinking is weak, but because the tools,
-          infrastructure, expertise, or connections needed to take the work further are not always
-          within reach. I am building EcoRue as an R&amp;D company around that gap, beginning with
-          sustainable materials, computational research, and the systems that help promising
-          research move closer to real-world use.
-        </p>
+    <section className="bg-[#5b453e] text-white">
+      <div className="mx-auto grid w-full max-w-[1450px] gap-10 px-6 py-14 sm:px-10 lg:grid-cols-[0.8fr_1.5fr_0.7fr] lg:items-center lg:gap-16 lg:px-16 lg:py-14">
+
+        {/* Left */}
+        <div>
+          <p className="text-base leading-relaxed text-white sm:text-[1.05rem]">
+            I&apos;m also building{" "}
+            <span className="font-bold">EcoRue</span>
+          </p>
+        </div>
+
+        {/* Middle */}
+        <div>
+          <p className="max-w-[620px] text-sm leading-[1.65] text-white/95 sm:text-base">
+            EcoRue grew out of a problem I kept seeing in research: good
+            ideas can stall long before they reach practical use, not because
+            the thinking is weak, but because the tools, infrastructure,
+            expertise, or connections needed to take the work further are not
+            always within reach. I am building EcoRue as an R&amp;D company
+            around that gap, beginning with sustainable materials,
+            computational research, and the systems that help promising
+            research move closer to real-world use.
+          </p>
+        </div>
+
+        {/* Right */}
+        <div className="lg:text-center">
+          <a
+            href="YOUR_ECORUE_URL"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-block text-sm font-bold uppercase text-white no-underline hover:underline hover:underline-offset-4 sm:text-base"
+          >
+            Visit EcoRue ↗
+          </a>
+        </div>
+
       </div>
-    </Section>
+    </section>
+  );
+}
+
+function WritingSection() {
+  return (
+    <section className="bg-white text-[#5b453e]">
+      <div className="mx-auto flex w-full max-w-[1200px] flex-col items-center px-6 py-10 text-center sm:px-10 lg:py-12">
+
+        <p className="max-w-[1050px] font-display text-sm font-bold leading-[1.5] sm:text-base">
+          I also write about research, how good ideas develop, and what helps
+          ambitious work move closer to real-world use.
+        </p>
+
+        <a
+          href={SUBSTACK}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="mt-8 text-sm font-bold uppercase text-[#5b453e] no-underline hover:underline hover:underline-offset-4"
+        >
+          Read my writing ↗
+        </a>
+
+      </div>
+    </section>
   );
 }
