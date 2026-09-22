@@ -5,7 +5,7 @@ import {
 } from "@tanstack/react-router";
 import { useState } from "react";
 import { PageShell } from "@/components/site/Layout";
-import { Arrow, Card, Check, Eyebrow, ExternalCta, Section } from "@/components/site/ui";
+import { Card } from "@/components/site/ui";
 import { SUBSTACK,WHOP } from "@/lib/links";
 
 const TITLE = "Dr. Ruth Mwongeli Muthoka — Research Design for Researchers, Founders & R&D Teams";
