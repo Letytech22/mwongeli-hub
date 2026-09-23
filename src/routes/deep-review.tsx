@@ -3,6 +3,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { PageShell } from "@/components/site/Layout";
 
 import { submitDeepReviewApplication } from "@/lib/deepReview.functions";
+import { WHOP } from "@/lib/links";
 
 const TITLE = "The Deep Review — Dr. Ruth Mwongeli Muthoka";
 const DESCRIPTION =
@@ -487,7 +488,7 @@ function WhichOption() {
         <div className="mt-12 grid gap-8 sm:grid-cols-2">
 
           <a
-            href="#book"
+            href={WHOP.bookCall150}
             target="_blank"
             rel="noopener noreferrer"
             className="font-display text-sm font-bold uppercase text-[#5b453e] no-underline hover:underline hover:underline-offset-4 sm:text-base"
