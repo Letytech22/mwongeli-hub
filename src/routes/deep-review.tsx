@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import { PageShell } from "@/components/site/Layout";
-import { submitDeepReviewApplication } from "@/server/DeepReview";
+
+import { submitDeepReviewApplication } from "@/lib/deepReview.functions";
 
 const TITLE = "The Deep Review — Dr. Ruth Mwongeli Muthoka";
 const DESCRIPTION =
