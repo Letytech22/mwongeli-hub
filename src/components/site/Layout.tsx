@@ -15,7 +15,7 @@ import {
   Linkedin,
 } from "lucide-react";
 
-import { SUBSTACK } from "@/lib/links";
+import { SUBSTACK, WHOP } from "@/lib/links";
 
 export function SiteHeader() {
   return (
@@ -23,11 +23,12 @@ export function SiteHeader() {
 
       {/* MOBILE HEADER */}
       <div className="md:hidden">
+
         {/* Name */}
         <div className="px-4 pt-4 text-center">
           <Link
             to="/"
-            className="no-underline text-white"
+            className="text-white no-underline"
           >
             <span className="font-display text-[0.95rem] font-bold tracking-tight">
               Dr. Ruth Mwongeli Muthoka
@@ -35,8 +36,8 @@ export function SiteHeader() {
           </Link>
         </div>
 
-        {/* Deep Review + socials */}
-        <div className="mt-3 flex items-center justify-between border-t border-white/10 px-4 py-3">
+        {/* Navigation */}
+        <div className="mt-3 flex items-center justify-center gap-3 border-t border-white/10 px-4 py-3">
 
           <Link
             to="/deep-review"
@@ -45,53 +46,65 @@ export function SiteHeader() {
             The Deep Review
           </Link>
 
-          <div className="flex shrink-0 items-center gap-3">
-            <a
-              href="https://www.linkedin.com/in/ruthmwongelimuthoka/"
-              target="_blank"
-              rel="noreferrer"
-              aria-label="LinkedIn"
-              className="text-white"
-            >
-              <Linkedin className="h-[18px] w-[18px]" />
-            </a>
+          <a
+            href={WHOP.bookCall150}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex shrink-0 items-center justify-center rounded-lg bg-[#a68b4d] px-4 py-2 text-[0.7rem] font-bold uppercase text-white no-underline transition hover:bg-[#947a42]"
+          >
+            Book a Call
+          </a>
 
-            <a
-              href={SUBSTACK}
-              target="_blank"
-              rel="noreferrer"
-              aria-label="The Deep Review"
-              className="text-white"
-            >
-              <Bookmark
-                className="h-[18px] w-[18px]"
-                fill="currentColor"
-              />
-            </a>
+        </div>
 
-            <a
-              href="https://instagram.com/ruthmwongeli"
-              target="_blank"
-              rel="noreferrer"
-              aria-label="Instagram"
-              className="text-white"
-            >
-              <Instagram className="h-[18px] w-[18px]" />
-            </a>
+        {/* Socials */}
+        <div className="flex items-center justify-center gap-5 border-t border-white/10 px-4 py-3">
 
-            <a
-              href="https://www.facebook.com/ruth.mwongeli.1"
-              target="_blank"
-              rel="noreferrer"
-              aria-label="Facebook"
-              className="text-white"
-            >
-              <Facebook
-                className="h-[18px] w-[18px]"
-                fill="currentColor"
-              />
-            </a>
-          </div>
+          <a
+            href="https://www.linkedin.com/in/ruthmwongelimuthoka/"
+            target="_blank"
+            rel="noreferrer"
+            aria-label="LinkedIn"
+            className="text-white"
+          >
+            <Linkedin className="h-[18px] w-[18px]" />
+          </a>
+
+          <a
+            href={SUBSTACK}
+            target="_blank"
+            rel="noreferrer"
+            aria-label="The Deep Review"
+            className="text-white"
+          >
+            <Bookmark
+              className="h-[18px] w-[18px]"
+              fill="currentColor"
+            />
+          </a>
+
+          <a
+            href="https://instagram.com/ruthmwongeli"
+            target="_blank"
+            rel="noreferrer"
+            aria-label="Instagram"
+            className="text-white"
+          >
+            <Instagram className="h-[18px] w-[18px]" />
+          </a>
+
+          <a
+            href="https://www.facebook.com/ruth.mwongeli.1"
+            target="_blank"
+            rel="noreferrer"
+            aria-label="Facebook"
+            className="text-white"
+          >
+            <Facebook
+              className="h-[18px] w-[18px]"
+              fill="currentColor"
+            />
+          </a>
 
         </div>
       </div>
@@ -99,25 +112,39 @@ export function SiteHeader() {
       {/* DESKTOP HEADER */}
       <div className="relative hidden min-h-[82px] w-full items-center justify-between px-5 sm:px-7 md:flex lg:px-10">
 
+        {/* Name */}
         <Link
           to="/"
-          className="shrink-0 no-underline text-white"
+          className="shrink-0 text-white no-underline"
         >
           <span className="font-display text-lg font-bold tracking-tight lg:text-2xl">
             Dr. Ruth Mwongeli Muthoka
           </span>
         </Link>
 
+        {/* Deep Review */}
         <Link
           to="/deep-review"
-          className="absolute left-1/2 -translate-x-1/2 no-underline text-white"
+          className="absolute left-1/2 -translate-x-1/2 text-white no-underline"
         >
           <span className="font-display text-base font-bold lg:text-xl">
             The Deep Review
           </span>
         </Link>
 
+        {/* Right side */}
         <div className="flex items-center gap-4 lg:gap-5">
+
+          {/* Book a Call */}
+          <a
+            href={WHOP.bookCall150}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center justify-center rounded-lg bg-[#a68b4d] px-4 py-2.5 text-xs font-bold uppercase tracking-[0.02em] text-white no-underline transition hover:bg-[#947a42] lg:px-5"
+          >
+            Book a Call
+          </a>
+
           <a
             href="https://www.linkedin.com/in/ruthmwongelimuthoka/"
             target="_blank"
@@ -163,13 +190,13 @@ export function SiteHeader() {
               fill="currentColor"
             />
           </a>
+
         </div>
 
       </div>
     </header>
   );
 }
-
 export function SiteFooter() {
   return (
     <footer className="bg-[#5b453e] text-white">

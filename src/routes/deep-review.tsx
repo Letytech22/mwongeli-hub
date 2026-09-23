@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import { PageShell } from "@/components/site/Layout";
 
@@ -22,7 +23,6 @@ function DeepReview() {
     <PageShell>
       <DeepReviewHero />
       <WhatToExpect />
-      <DeepReviewApplication />
       <WhichOption/>
     </PageShell>
   );
@@ -56,6 +56,11 @@ function DeepReviewHero() {
   );
 }
 function WhatToExpect() {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
+  const [submitError, setSubmitError] = useState("");
+
+ 
     return (
       <section className="bg-white text-[#5b453e]">
         <div className="mx-auto grid w-full max-w-[1450px] gap-14 px-6 py-10 sm:px-10 lg:grid-cols-[1.2fr_0.8fr] lg:gap-24 lg:px-20 lg:py-12">
@@ -173,106 +178,282 @@ function WhatToExpect() {
           </div>
   
           {/* RIGHT SIDE */}
-          <div className="flex items-center lg:justify-center">
-            <div className="max-w-[500px]">
-              <a
-                href="/deep-review/apply"
-                className="group block no-underline"
-              >
-                <h2 className="font-display text-[1.8rem] font-bold uppercase leading-[1.25] text-[#5b453e] sm:text-[2.1rem]">
-                  Apply for the Deep
-                  <br />
-                  Review{" "}
-                  <span className="inline-block transition-transform group-hover:translate-x-2">
-                    →
-                  </span>
-                </h2>
-              </a>
-  
-              <p className="mt-3 text-sm leading-[1.55] text-[#5b453e]/90 sm:text-base">
-                I read every application myself. You&apos;ll hear from me within
-                2 business days.
-              </p>
-            </div>
-          </div>
+          <div
+  id="apply"
+  className="flex scroll-mt-24 justify-center lg:justify-end"
+>
+  <div className="w-full max-w-[480px] rounded-2xl border border-[#5b453e]/15 bg-[#faf8f4] p-6 shadow-sm sm:p-8">
+
+    <h2 className="font-display text-xl font-bold text-[#5b453e]">
+      Apply for the Deep Review
+    </h2>
+
+    <p className="mt-2 text-sm leading-[1.6] text-[#5b453e]/75">
+      Takes about 5 minutes.Be honest - vague answers get vague advice.
+    </p>
+
+    <form
+  className="mt-7 space-y-5"
+  onSubmit={async (e) => {
+    e.preventDefault();
+
+    const form = e.currentTarget;
+
+    setIsSubmitting(true);
+    setSubmitError("");
+
+    try {
+      const response = await fetch(
+        "https://formspree.io/f/mjykrkwj",
+        {
+          method: "POST",
+          body: new FormData(form),
+          headers: {
+            Accept: "application/json",
+          },
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error("Unable to submit application");
+      }
+
+      form.reset();
+      setSubmitted(true);
+    } catch {
+      setSubmitError(
+        "Something went wrong while submitting your application. Please try again."
+      );
+    } finally {
+      setIsSubmitting(false);
+    }
+  }}
+>
+  <input
+    type="hidden"
+    name="_subject"
+    value="New Deep Review Application"
+  />
+
+  <input
+    type="hidden"
+    name="service"
+    value="The Deep Review"
+  />
+  {/* Full name */}
+  <div>
+    <label
+      htmlFor="fullName"
+      className="mb-2 block text-xs font-semibold text-[#5b453e]"
+    >
+      Full name *
+    </label>
+
+    <input
+      id="fullName"
+      name="fullName"
+      type="text"
+      required
+      className="w-full rounded-lg border border-[#5b453e]/20 bg-white px-4 py-3 text-sm text-[#5b453e] outline-none transition focus:border-[#9a8555]"
+    />
+  </div>
+
+  {/*  Email address */}
+  <div>
+    <label
+      htmlFor="email"
+      className="mb-2 block text-xs font-semibold text-[#5b453e]"
+    >
+       Email address *
+    </label>
+
+    <input
+      id="email"
+      name="email"
+      type="email"
+      required
+      className="w-full rounded-lg border border-[#5b453e]/20 bg-white px-4 py-3 text-sm text-[#5b453e] outline-none transition focus:border-[#9a8555]"
+    />
+  </div>
+
+  {/*  University / company / organisation */}
+  <div>
+    <label
+      htmlFor="organisation"
+      className="mb-2 block text-xs font-semibold leading-relaxed text-[#5b453e]"
+    >
+      University, company, organisation, or independent researcher
+    </label>
+
+    <input
+      id="organisation"
+      name="organisation"
+      type="text"
+      className="w-full rounded-lg border border-[#5b453e]/20 bg-white px-4 py-3 text-sm text-[#5b453e] outline-none transition focus:border-[#9a8555]"
+    />
+
+    <p className="mt-1 text-[0.7rem] text-[#5b453e]/55">
+      Optional
+    </p>
+  </div>
+
+  {/*  What are you working on? */}
+  <div>
+    <label
+      htmlFor="workingOn"
+      className="mb-2 block text-xs font-semibold text-[#5b453e]"
+    >
+      What are you working on? *
+    </label>
+
+    <textarea
+      id="workingOn"
+      name="workingOn"
+      required
+      rows={4}
+      placeholder="Give me enough context to understand the research or technical problem.You do not need to explain everything here."
+      className="w-full resize-none rounded-lg border border-[#5b453e]/20 bg-white px-4 py-3 text-sm leading-relaxed text-[#5b453e] outline-none transition focus:border-[#9a8555]"
+    />
+
+   
+  </div>
+
+  {/* Research question / problem / decision */}
+  <div>
+    <label
+      htmlFor="researchProblem"
+      className="mb-2 block text-xs font-semibold leading-relaxed text-[#5b453e]"
+    >
+       What research question, problem, or decision are you stuck on? *
+    </label>
+
+    <textarea
+      id="researchProblem"
+      name="researchProblem"
+      required
+      rows={4}
+      placeholder="This could be the research question, methodology, experimental or computational approach, results, interpretation, or deciding what to do next."
+      className="w-full resize-none rounded-lg border border-[#5b453e]/20 bg-white px-4 py-3 text-sm leading-relaxed text-[#5b453e] outline-none transition focus:border-[#9a8555]"
+    />
+
+  </div>
+
+  {/*  Desired clarity */}
+  <div>
+    <label
+      htmlFor="desiredClarity"
+      className="mb-2 block text-xs font-semibold leading-relaxed text-[#5b453e]"
+    >
+       What would you like to be clearer about by the end of the Deep Review? *
+    </label>
+
+    <textarea
+      id="desiredClarity"
+      name="desiredClarity"
+      required
+      rows={4}
+      placeholder="What question, uncertainty, or decision would you like the review to help you resolve?"
+      className="w-full resize-none rounded-lg border border-[#5b453e]/20 bg-white px-4 py-3 text-sm leading-relaxed text-[#5b453e] outline-none transition focus:border-[#9a8555]"
+    />
+
+  </div>
+
+  {/*  Deadline */}
+  <div>
+    <label
+      htmlFor="deadline"
+      className="mb-2 block text-xs font-semibold text-[#5b453e]"
+    >
+       Is there a deadline I should know about?
+    </label>
+
+    <input
+      id="deadline"
+      name="deadline"
+      type="text"
+      placeholder="e.g. thesis submission, funding deadline, experiment starting next month"
+      className="w-full rounded-lg border border-[#5b453e]/20 bg-white px-4 py-3 text-sm text-[#5b453e] outline-none placeholder:text-[#5b453e]/40 focus:border-[#9a8555]"
+    />
+
+    <p className="mt-1 text-[0.7rem] text-[#5b453e]/55">
+      Optional
+    </p>
+  </div>
+
+  {/*  Fee acknowledgement */}
+  <div>
+    <p className="mb-3 text-xs font-semibold text-[#5b453e]">
+      Fee acknowledgement *
+    </p>
+
+    <label className="flex cursor-pointer items-start gap-3 rounded-lg border border-[#5b453e]/15 bg-white p-4">
+      <input
+        type="checkbox"
+        id="feeAcknowledgement"
+        name="feeAcknowledgement"
+        value="I understand and accept the US$1,500 fee"
+        required
+        className="mt-0.5 h-4 w-4 shrink-0 accent-[#5b453e]"
+      />
+
+      <span className="text-xs leading-[1.6] text-[#5b453e]/90">
+        I understand that The Deep Review is US$1,500 if my application is
+        accepted.
+      </span>
+    </label>
+  </div>
+
+  {/* Submit */}
+  <button
+  type="submit"
+  disabled={isSubmitting || submitted}
+  className="w-full rounded-lg bg-[#5b453e] px-6 py-3.5 text-xs font-bold uppercase tracking-[0.06em] text-white transition hover:bg-[#493731] disabled:cursor-not-allowed disabled:opacity-60"
+>
+  {isSubmitting
+    ? "Submitting..."
+    : submitted
+      ? "Application received"
+      : "Submit Application"}
+</button>
+
+{submitted && (
+  <div className="rounded-lg border border-[#9a8555]/30 bg-[#9a8555]/10 px-4 py-4">
+    <p className="text-sm font-semibold text-[#5b453e]">
+      Thank you. Your application has been received.
+    </p>
+
+    <p className="mt-2 text-xs leading-relaxed text-[#5b453e]/70">
+      I read every application personally. Expect a reply within 2 business
+      days.
+    </p>
+  </div>
+)}
+
+{submitError && (
+  <div className="rounded-lg border border-red-200 bg-red-50 px-4 py-4">
+    <p className="text-sm text-red-700">
+      {submitError}
+    </p>
+  </div>
+)}
+</form>
+
+{/*
+<p className="mt-4 text-xs leading-relaxed text-[#5b453e]/60">
+  I read every application personally. Expect a reply within 2 business days.
+</p>
+
+*/}
+
+  </div>
+</div>
   
         </div>
       </section>
     );
   }
 
-function DeepReviewApplication() {
-  return (
-    <section
-      id="apply"
-      className="scroll-mt-20 bg-[#5b453e] text-white"
-    >
-      <div className="mx-auto w-full max-w-[1100px] px-6 py-20 text-center sm:px-10 lg:py-24">
 
-        <h2 className="font-display text-[1.6rem] font-bold uppercase leading-tight text-white sm:text-[2rem]">
-          Apply for the Deep Review
-        </h2>
-
-        <p className="mx-auto mt-6 max-w-[1000px] text-base leading-[1.5] text-white/95 sm:text-lg">
-          Takes about 5 minutes. Tell me where the research is getting stuck.
-          I read every application myself. You&apos;ll hear from me within 2
-          business days.
-        </p>
-
-        <form
-          onSubmit={(e) => {
-            e.preventDefault();
-          }}
-          className="mx-auto mt-12 max-w-[950px]"
-        >
-          <div className="grid gap-4 sm:grid-cols-2">
-
-            <input
-              type="text"
-              name="firstName"
-              required
-              placeholder="First name"
-              className="w-full rounded-lg border-0 bg-white px-5 py-5 text-lg text-[#5b453e] outline-none placeholder:text-[#5b453e]/45 focus:ring-2 focus:ring-[#9a8555]"
-            />
-
-            <input
-              type="text"
-              name="lastName"
-              required
-              placeholder="Last name"
-              className="w-full rounded-lg border-0 bg-white px-5 py-5 text-lg text-[#5b453e] outline-none placeholder:text-[#5b453e]/45 focus:ring-2 focus:ring-[#9a8555]"
-            />
-
-            <input
-              type="email"
-              name="email"
-              required
-              placeholder="Email"
-              className="w-full rounded-lg border-0 bg-white px-5 py-5 text-lg text-[#5b453e] outline-none placeholder:text-[#5b453e]/45 focus:ring-2 focus:ring-[#9a8555]"
-            />
-
-            <input
-              type="text"
-              name="research"
-              required
-              placeholder="What are you working on?"
-              className="w-full rounded-lg border-0 bg-white px-5 py-5 text-lg text-[#5b453e] outline-none placeholder:text-[#5b453e]/45 focus:ring-2 focus:ring-[#9a8555]"
-            />
-
-          </div>
-
-          <button
-            type="submit"
-            className="mt-5 rounded-lg bg-[#9a8555] px-6 py-3 text-sm font-bold uppercase text-white transition hover:bg-[#8b774c]"
-          >
-            Submit Application
-          </button>
-        </form>
-
-      </div>
-    </section>
-  );
-};
 
 function WhichOption() {
   return (

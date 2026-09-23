@@ -27,10 +27,14 @@ function FreeGuidePage() {
       <Section className="pt-14">
         <Eyebrow>Your download is ready</Eyebrow>
         <h1 className="mt-4 text-4xl leading-tight sm:text-5xl">Before You Choose a Method</h1>
-        <p className="mt-4 max-w-2xl text-lg leading-relaxed text-muted-foreground">
-          Thank you. Your free guide is below. Start with the Research Spine and the Research
-          Question Stress Test — most studies come unstuck in one of those two places.
-        </p>
+        
+        <div className="mt-6 rounded-r-xl border-l-4 border-[#9a8555] bg-[#5b453e]/[0.04] px-5 py-4">
+  <p className="text-[0.95rem] leading-[1.7] text-[#5b453e]/85">
+    This guide is designed to help you work out whether you actually have a
+    research problem, whether the question can be answered, and what needs to
+    be clear before you choose a method.
+  </p>
+</div>
         <Card className="mt-8 max-w-2xl">
           <p className="text-sm font-semibold uppercase tracking-[0.14em] text-accent-foreground">
             Free · PDF

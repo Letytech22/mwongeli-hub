@@ -114,7 +114,7 @@ function Hero() {
             </a>
 
             <Link
-              to="/deep-review"
+              to="#deep-review"
               className="inline-flex min-h-12 w-full items-center justify-center rounded-lg border border-white/80 bg-transparent px-5 text-xs font-bold uppercase tracking-[0.01em] text-white no-underline transition hover:bg-white hover:text-[#5b453e] sm:min-h-14 sm:w-auto sm:px-6 sm:text-sm"
             >
               The Deep Review
@@ -408,7 +408,10 @@ function WaysToWork() {
 }
 function DeepReview() {
   return (
-    <section className="bg-white text-[#5b453e]">
+    <section
+      id="deep-review"
+      className="scroll-mt-20 bg-white text-[#5b453e]"
+    >
       <div className="mx-auto w-full max-w-[1250px] px-6 py-14 sm:px-10 lg:px-12 lg:py-16">
 
         {/* Introduction */}
@@ -798,7 +801,7 @@ function Resources() {
               <li>→ A one-page Research Readiness Check you can use before writing a proposal or starting data collection</li>
               <li>→ A short section on using AI without handing over the thinking that makes you a researcher</li>
             </ul>
-
+{/*
             <div className="mt-6 rounded-r-xl border-l-4 border-[#9a8555] bg-[#5b453e]/[0.04] px-5 py-4">
   <p className="text-[0.95rem] leading-[1.7] text-[#5b453e]/85">
     This guide is designed to help you work out whether you actually have a
@@ -807,12 +810,14 @@ function Resources() {
   </p>
 </div>
 
+*/}
+
             <p className="mt-6 text-[0.95rem] font-bold uppercase">
               Free · PDF
             </p>
 
             <a
-  href="https://drive.google.com/uc?export=download&id=1-L4xDUMSp3pFjr7oB5PUsYl-qz6zRSeL"
+  href="/free-guide"
   target="_blank"
   rel="noopener noreferrer"
   className="mt-1 inline-block text-[0.95rem] font-bold uppercase text-[#5b453e] no-underline hover:underline hover:underline-offset-4"
