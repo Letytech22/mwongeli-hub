@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import { PageShell } from "@/components/site/Layout";
+import { submitDeepReviewApplication } from "@/server/DeepReview";
 
 const TITLE = "The Deep Review — Dr. Ruth Mwongeli Muthoka";
 const DESCRIPTION =
@@ -198,31 +199,34 @@ function WhatToExpect() {
     e.preventDefault();
 
     const form = e.currentTarget;
+    const formData = new FormData(form);
 
     setIsSubmitting(true);
     setSubmitError("");
 
     try {
-      const response = await fetch(
-        "https://formspree.io/f/mjykrkwj",
-        {
-          method: "POST",
-          body: new FormData(form),
-          headers: {
-            Accept: "application/json",
-          },
-        }
-      );
-
-      if (!response.ok) {
-        throw new Error("Unable to submit application");
-      }
+      await submitDeepReviewApplication({
+        data: {
+          fullName: String(formData.get("fullName") || ""),
+          email: String(formData.get("email") || ""),
+          organisation: String(formData.get("organisation") || ""),
+          workingOn: String(formData.get("workingOn") || ""),
+          researchProblem: String(formData.get("researchProblem") || ""),
+          desiredClarity: String(formData.get("desiredClarity") || ""),
+          deadline: String(formData.get("deadline") || ""),
+          feeAcknowledgement: String(
+            formData.get("feeAcknowledgement") || ""
+          ),
+        },
+      });
 
       form.reset();
       setSubmitted(true);
-    } catch {
+    } catch (error) {
       setSubmitError(
-        "Something went wrong while submitting your application. Please try again."
+        error instanceof Error
+          ? error.message
+          : "Something went wrong while submitting your application."
       );
     } finally {
       setIsSubmitting(false);
@@ -243,7 +247,7 @@ function WhatToExpect() {
   {/* Full name */}
   <div>
     <label
-      htmlFor="fullName"
+      htmlFor="Full Name"
       className="mb-2 block text-xs font-semibold text-[#5b453e]"
     >
       Full name *
