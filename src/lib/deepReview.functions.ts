@@ -45,7 +45,7 @@ export const submitDeepReviewApplication = createServerFn({
         },
         body: JSON.stringify({
           sender: {
-            name: "Ruth Mwongeli Website",
+            name: "Dr. Ruth Mwongeli | The Deep Review",
             email: senderEmail,
           },
 
