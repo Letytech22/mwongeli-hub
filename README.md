@@ -1,18 +1,95 @@
-# Wongeli Hub
+# Dr. Ruth Mwongeli Muthoka
 
-I need we rebuild this website.https://website.beacons.ai/ruthmwongeli/websites/live/860e3536-7a33-42fe-ba0e-0082f01b980e using react,vite,typescript.Ensure the colrs used are same,once someone pays the customer is redirected to another url:For example For the free guide, once they put their email, they are redirected to the free guide page where the can download it then presented with more offers. For the $49 product, once they pay on whop they are redirected to the research guide page, where they can donwload it then presented with more offers.For Book my call,once they pay on whop, they are redirected to my Calendly page where they can book a date for a meeting.For the deep review,I have a small form of application, then once I confirm them, will send them a payment link,,anyway once they pay on whop, they will e redirected to the deep review confirmation page where they can book a call on calendly, for free then I will create a Google Drive workspace for them for further correspondence
+Official website for Dr. Ruth Mwongeli Muthoka, focused on research design, research advisory, technical problem solving, and resources for researchers, technical founders, and R&D teams.
 
-This project was built with [Lovable](https://lovable.dev).
+Live website:
 
-## Build with Lovable
+https://ruthmwongeli.com
 
-Continue developing this project in the [Lovable editor](https://lovable.dev/projects/d9d7c0c0-d6eb-4801-975f-3c937e8fc92e).
+## About the Website
 
-- **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: every change made in Lovable is committed straight to this repository.
-- **Full ownership**: this code is yours. Push to `main` on GitHub and your changes sync back into Lovable, ready for your next prompt.
+The website helps researchers and technical teams clarify what they are actually trying to find out before building research around methods, experiments, simulations, or datasets.
 
-## Development
+It provides access to:
+
+- Research design guidance
+- One-on-one research calls
+- The Deep Review
+- Free research resources
+- Paid research guides
+- Dr. Ruth Mwongeli Muthoka's professional and research profiles
+
+## Main Services
+
+### Book a Call
+
+A 60-minute research consultation for contained research problems, methodology questions, interpretation challenges, and technical decisions.
+
+Booking and payment are handled through Whop.
+
+### The Deep Review
+
+The Deep Review is for research problems that require more attention than a single conversation.
+
+The process is:
+
+1. The client submits a Deep Review application.
+2. The application is reviewed personally.
+3. Accepted applicants receive a private Whop payment link.
+4. After payment, the client is redirected to a private confirmation page.
+5. The client books a scoping call through Calendly.
+6. Review scope, materials, timeline, and boundaries are agreed before work begins.
+
+Deep Review applications are submitted securely through the website and delivered using Brevo transactional email.
+
+### Research Guides
+
+#### Before You Choose a Method
+
+A free research guide designed to help researchers identify the real research problem, develop an answerable question, and avoid choosing a method too early.
+
+#### Design Research That Holds Together
+
+A practical research-design handbook covering the path from research problem through question, literature, methodology, investigation, interpretation, and defensible conclusions.
+
+The paid guide is purchased through Whop and downloaded from a private post-purchase page.
+
+## Technology
+
+The website is built with:
+
+- React
+- TypeScript
+- TanStack Start
+- TanStack Router
+- Tailwind CSS
+- Vite
+- Vercel
+
+External services include:
+
+- Brevo for transactional email
+- Whop for payments
+- Calendly for scheduling
+- Google Drive for downloadable research resources
+- Google Search Console for search visibility
+
+## Project Structure
+
+```text
+src/
+├── components/
+│   └── site/
+├── lib/
+├── routes/
+├── router.tsx
+├── routeTree.gen.ts
+└── styles.css
+
+public/
+├── images
+├── robots.txt
+└── sitemap.xml
 
 Prefer working locally? You need Node.js and npm — [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
 
