@@ -1,5 +1,13 @@
-import { createFileRoute } from "@tanstack/react-router";
+import {
+  createFileRoute,
+  redirect,
+} from "@tanstack/react-router";
+
 import { PageShell } from "@/components/site/Layout";
+
+import {
+  getDeepReviewAccess,
+} from "@/lib/deepReviewAccess.functions";
 
 const TITLE =
   "Deep Review Confirmation | Dr. Ruth Mwongeli Muthoka";
@@ -7,12 +15,34 @@ const TITLE =
 export const Route = createFileRoute(
   "/deep-review-confirmation"
 )({
+  beforeLoad: async () => {
+    const result =
+      await getDeepReviewAccess();
+
+    if (!result.allowed) {
+      throw redirect({
+        to: "/deep-review-payment-return",
+      });
+    }
+  },
+
   head: () => ({
     meta: [
-      { title: TITLE },
-      { name: "robots", content: "noindex, nofollow" },
+      {
+        title: TITLE,
+      },
+      {
+        name: "robots",
+        content: "noindex, nofollow",
+      },
     ],
   }),
+
+  headers: () => ({
+    "Cache-Control":
+      "private, no-store",
+  }),
+
   component: DeepReviewConfirmation,
 });
 function DeepReviewConfirmation() {

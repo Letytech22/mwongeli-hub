@@ -13,6 +13,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as CallConfirmedRouteImport } from './routes/call-confirmed'
 import { Route as DeepReviewRouteImport } from './routes/deep-review'
 import { Route as DeepReviewConfirmationRouteImport } from './routes/deep-review-confirmation'
+import { Route as DeepReviewPaymentReturnRouteImport } from './routes/deep-review-payment-return'
 import { Route as FreeGuideRouteImport } from './routes/free-guide'
 import { Route as ResearchGuideRouteImport } from './routes/research-guide'
 
@@ -36,6 +37,11 @@ const DeepReviewConfirmationRoute = DeepReviewConfirmationRouteImport.update({
   path: '/deep-review-confirmation',
   getParentRoute: () => rootRouteImport,
 } as any)
+const DeepReviewPaymentReturnRoute = DeepReviewPaymentReturnRouteImport.update({
+  id: '/deep-review-payment-return',
+  path: '/deep-review-payment-return',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const FreeGuideRoute = FreeGuideRouteImport.update({
   id: '/free-guide',
   path: '/free-guide',
@@ -52,6 +58,7 @@ export interface FileRoutesByFullPath {
   '/call-confirmed': typeof CallConfirmedRoute
   '/deep-review': typeof DeepReviewRoute
   '/deep-review-confirmation': typeof DeepReviewConfirmationRoute
+  '/deep-review-payment-return': typeof DeepReviewPaymentReturnRoute
   '/free-guide': typeof FreeGuideRoute
   '/research-guide': typeof ResearchGuideRoute
 }
@@ -60,6 +67,7 @@ export interface FileRoutesByTo {
   '/call-confirmed': typeof CallConfirmedRoute
   '/deep-review': typeof DeepReviewRoute
   '/deep-review-confirmation': typeof DeepReviewConfirmationRoute
+  '/deep-review-payment-return': typeof DeepReviewPaymentReturnRoute
   '/free-guide': typeof FreeGuideRoute
   '/research-guide': typeof ResearchGuideRoute
 }
@@ -69,6 +77,7 @@ export interface FileRoutesById {
   '/call-confirmed': typeof CallConfirmedRoute
   '/deep-review': typeof DeepReviewRoute
   '/deep-review-confirmation': typeof DeepReviewConfirmationRoute
+  '/deep-review-payment-return': typeof DeepReviewPaymentReturnRoute
   '/free-guide': typeof FreeGuideRoute
   '/research-guide': typeof ResearchGuideRoute
 }
@@ -79,6 +88,7 @@ export interface FileRouteTypes {
     | '/call-confirmed'
     | '/deep-review'
     | '/deep-review-confirmation'
+    | '/deep-review-payment-return'
     | '/free-guide'
     | '/research-guide'
   fileRoutesByTo: FileRoutesByTo
@@ -87,6 +97,7 @@ export interface FileRouteTypes {
     | '/call-confirmed'
     | '/deep-review'
     | '/deep-review-confirmation'
+    | '/deep-review-payment-return'
     | '/free-guide'
     | '/research-guide'
   id:
@@ -95,6 +106,7 @@ export interface FileRouteTypes {
     | '/call-confirmed'
     | '/deep-review'
     | '/deep-review-confirmation'
+    | '/deep-review-payment-return'
     | '/free-guide'
     | '/research-guide'
   fileRoutesById: FileRoutesById
@@ -104,6 +116,7 @@ export interface RootRouteChildren {
   CallConfirmedRoute: typeof CallConfirmedRoute
   DeepReviewRoute: typeof DeepReviewRoute
   DeepReviewConfirmationRoute: typeof DeepReviewConfirmationRoute
+  DeepReviewPaymentReturnRoute: typeof DeepReviewPaymentReturnRoute
   FreeGuideRoute: typeof FreeGuideRoute
   ResearchGuideRoute: typeof ResearchGuideRoute
 }
@@ -138,6 +151,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DeepReviewConfirmationRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/deep-review-payment-return': {
+      id: '/deep-review-payment-return'
+      path: '/deep-review-payment-return'
+      fullPath: '/deep-review-payment-return'
+      preLoaderRoute: typeof DeepReviewPaymentReturnRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/free-guide': {
       id: '/free-guide'
       path: '/free-guide'
@@ -160,6 +180,7 @@ const rootRouteChildren: RootRouteChildren = {
   CallConfirmedRoute: CallConfirmedRoute,
   DeepReviewRoute: DeepReviewRoute,
   DeepReviewConfirmationRoute: DeepReviewConfirmationRoute,
+  DeepReviewPaymentReturnRoute: DeepReviewPaymentReturnRoute,
   FreeGuideRoute: FreeGuideRoute,
   ResearchGuideRoute: ResearchGuideRoute,
 }
