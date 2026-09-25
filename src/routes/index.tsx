@@ -373,39 +373,74 @@ function ProfileLinks() {
 }
 
 function WaysToWork() {
+  const questions = [
+    "Is this actually a research problem?",
+    "Is my research question too broad, too weak, or disconnected from the problem?",
+    "Does my methodology actually answer my research question?",
+    "Where is the real gap in the literature?",
+    "Should I repeat, redesign, or rethink an experiment that keeps failing?",
+    "What can I reasonably conclude from unclear or unexpected results?",
+    "Which research direction deserves investigation first?",
+    "Where has my research stopped holding together?",
+  ];
+
   return (
     <section
       id="work"
       className="scroll-mt-20 bg-[#9a8555] text-white"
     >
-      <div className="mx-auto flex min-h-[500px] w-full max-w-[1500px] flex-col items-center justify-center px-6 py-20 text-center sm:px-10 lg:px-16">
+      <div className="mx-auto w-full max-w-[1150px] px-6 py-20 sm:px-10 lg:px-16 lg:py-24">
 
-        <h2 className="max-w-[1050px] font-display text-[1.6rem] font-bold leading-[1.25] text-white sm:text-[1.9rem] lg:text-[2.1rem]">
-          Bring me the research problem you keep coming back to.
-        </h2>
+        <div className="text-center">
+          <h2 className="font-display text-[1.7rem] font-bold leading-[1.25] text-white sm:text-[2rem] lg:text-[2.2rem]">
+            Bring me the research problem you keep coming back to.
+          </h2>
+        </div>
 
-        <p className="mt-6 max-w-[1300px] text-sm leading-[1.55] text-white/95 sm:text-base lg:text-[1.05rem]">
-          You may have a research idea that is still too vague, a question that
-          does not quite work, a methodology problem, confusing results, an
-          experiment that keeps failing, or several possible directions and no
-          clear way to choose between them. Bring it. We will spend 60 minutes
-          working through where the research is getting stuck and what makes
-          sense to do next.
-        </p>
+        <div className="mx-auto mt-12 max-w-[950px]">
+          <h3 className="font-display text-xl font-bold text-white sm:text-2xl">
+            Questions we can work through
+          </h3>
 
-        <a
-          href={WHOP.bookCall150}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="mt-8 inline-flex items-center justify-center rounded-lg bg-white px-5 py-3 text-sm font-bold text-[#5b453e] no-underline transition hover:bg-white/90"
-        >
-          Book a Call with Me · 60 min · $150
-        </a>
+          <div className="mt-7 space-y-4">
+            {questions.map((question) => (
+              <div
+                key={question}
+                className="flex items-start gap-3"
+              >
+                <span className="mt-[0.65rem] h-1.5 w-1.5 shrink-0 rounded-full bg-white" />
+
+                <p className="text-sm leading-[1.65] text-white/95 sm:text-base">
+                  {question}
+                </p>
+              </div>
+            ))}
+          </div>
+
+          <p className="mt-10 text-sm leading-[1.75] text-white/95 sm:text-base lg:text-[1.05rem]">
+            In this 60-minute session, we will work through where the research
+            is getting stuck, what may be causing it, and what makes sense to
+            do next.
+          </p>
+
+          <div className="mt-8">
+            <a
+              href={WHOP.bookCall150}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center rounded-lg bg-white px-6 py-3.5 text-sm font-bold text-[#5b453e] no-underline transition hover:bg-white/90"
+            >
+              Book a Call with Me · 60 min · $150
+            </a>
+          </div>
+        </div>
 
       </div>
     </section>
   );
 }
+
+
 function DeepReview() {
   return (
     <section
