@@ -14,7 +14,6 @@ export const CALENDLY = {
 
 export const SUBSTACK = "https://substack.com/@ruthmwongeli";
 
-// Files served from /public/downloads — replace these PDFs with the real ones.
 export const DOWNLOADS = {
   freeGuide: "/downloads/before-you-choose-a-method.pdf",
   researchGuide: "/downloads/design-research-that-holds-together.pdf",
