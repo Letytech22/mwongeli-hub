@@ -159,8 +159,13 @@ function DeepReviewPaymentReturn() {
         return;
       }
 
+     
+
       await navigate({
         to: "/deep-review-confirmation",
+        search: {
+          payment_id: paymentId,
+        },
       });
     } catch {
       setMessage(
