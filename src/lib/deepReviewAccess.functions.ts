@@ -117,6 +117,31 @@ if (!apiKey) {
   const payment =
     (await response.json()) as WhopPayment;
 
+    const paymentRecord =
+  payment as unknown as Record<string, unknown>;
+
+console.log(
+  "WHOP PAYMENT TOP LEVEL KEYS:",
+  Object.keys(paymentRecord)
+);
+
+for (const [key, value] of Object.entries(
+  paymentRecord
+)) {
+  if (
+    value &&
+    typeof value === "object" &&
+    !Array.isArray(value)
+  ) {
+    console.log(
+      `WHOP KEYS INSIDE ${key}:`,
+      Object.keys(
+        value as Record<string, unknown>
+      )
+    );
+  }
+}
+
   const paymentEmail =
     normalizeEmail(
       payment.user?.email || ""
