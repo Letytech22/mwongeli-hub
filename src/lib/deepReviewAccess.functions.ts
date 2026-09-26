@@ -101,10 +101,7 @@ async function findPaidDeepReview(
     "plan_id",
     planId
   );
-  url.searchParams.set(
-    "include_free",
-    "true"
-  );
+ 
 
   url.searchParams.set(
     "first",
