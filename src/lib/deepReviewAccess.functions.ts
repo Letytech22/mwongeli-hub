@@ -131,6 +131,29 @@ async function findPaidDeepReview(
   const normalizedEmail =
     normalizeEmail(email);
 
+    console.log("Deep Review verification:", {
+      paymentId: payment.id,
+    
+      status: payment.status,
+      substatus: payment.substatus,
+      total: payment.total,
+    
+      returnedProductId:
+        payment.product?.id,
+    
+      expectedProductId:
+        productId,
+    
+      returnedPlanId:
+        payment.plan?.id,
+    
+      expectedPlanId:
+        planId,
+    
+      emailMatches:
+        paymentEmail === normalizedEmail,
+    });
+
     const paymentSucceeded =
     payment.substatus === "succeeded" &&
     (
