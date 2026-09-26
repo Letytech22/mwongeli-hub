@@ -1,19 +1,19 @@
 import { createServerFn } from "@tanstack/react-start";
 import { useDeepReviewSession } from "@/lib/deepReviewSession";
 
+type WhopMoney = {
+  currency: string;
+  amount: string;
+  decimals?: number;
+  display_decimals?: number;
+};
+
 type WhopPayment = {
   id: string;
   status: string;
   substatus?: string | null;
-  total?: number;
 
-  product?: {
-    id: string;
-  } | null;
-
-  plan?: {
-    id: string;
-  } | null;
+  total?: WhopMoney | number;
 
   user?: {
     email?: string | null;
@@ -69,15 +69,9 @@ async function findPaidDeepReview(
   email: string
 ) {
   const apiKey =
-    process.env["WHOP_API_KEY"];
+  process.env["WHOP_API_KEY"];
 
-  const productId =
-    process.env["WHOP_DEEP_REVIEW_PRODUCT_ID"];
-
-  const planId =
-    process.env["WHOP_DEEP_REVIEW_PLAN_ID"];
-
-  if (!apiKey || !productId || !planId) {
+if (!apiKey) {
     throw new Error(
       "Whop payment verification is not configured."
     );
@@ -131,28 +125,7 @@ async function findPaidDeepReview(
   const normalizedEmail =
     normalizeEmail(email);
 
-    console.log("Deep Review verification:", {
-      paymentId: payment.id,
     
-      status: payment.status,
-      substatus: payment.substatus,
-      total: payment.total,
-    
-      returnedProductId:
-        payment.product?.id,
-    
-      expectedProductId:
-        productId,
-    
-      returnedPlanId:
-        payment.plan?.id,
-    
-      expectedPlanId:
-        planId,
-    
-      emailMatches:
-        paymentEmail === normalizedEmail,
-    });
 
     const paymentSucceeded =
     payment.substatus === "succeeded" &&
@@ -161,10 +134,22 @@ async function findPaidDeepReview(
       payment.total === 0
     );
   
+    const amount =
+    typeof payment.total === "number"
+      ? payment.total
+      : Number(payment.total?.amount ?? NaN);
+  
+  const testMode =
+    process.env["DEEP_REVIEW_TEST_MODE"] === "true";
+  
+  const validAmount =
+    amount === 1500 ||
+    (testMode && amount === 0);
+  
   const validPayment =
-    paymentSucceeded &&
-    payment.product?.id === productId &&
-    payment.plan?.id === planId &&
+    payment.status === "paid" &&
+    payment.substatus === "succeeded" &&
+    validAmount &&
     paymentEmail === normalizedEmail;
 
   return validPayment
