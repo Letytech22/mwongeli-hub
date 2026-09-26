@@ -20,9 +20,9 @@ type WhopPayment = {
   } | null;
 };
 
-type WhopPaymentsResponse = {
-  data?: WhopPayment[];
-};
+
+
+
 
 function normalizeEmail(email: string) {
   return email.trim().toLowerCase();
@@ -65,47 +65,53 @@ async function hashVerificationCode(
 }
 
 async function findPaidDeepReview(
+  paymentId: string,
   email: string
 ) {
   const apiKey =
     process.env["WHOP_API_KEY"];
 
-    const productId =
+  const productId =
     process.env["WHOP_DEEP_REVIEW_PRODUCT_ID"];
 
-    const planId =
+  const planId =
     process.env["WHOP_DEEP_REVIEW_PLAN_ID"];
-  
 
-    if (!apiKey || !productId || !planId) {
+  if (!apiKey || !productId || !planId) {
     throw new Error(
       "Whop payment verification is not configured."
     );
   }
 
-  const url = new URL(
-    "https://api.whop.com/api/v1/payments"
+  if (!/^pay_[A-Za-z0-9]+$/.test(paymentId)) {
+    return null;
+  }
+
+  const response = await fetch(
+    `https://api.whop.com/api/v1/payments/${encodeURIComponent(
+      paymentId
+    )}`,
+    {
+      method: "GET",
+
+      headers: {
+        Authorization: `Bearer ${apiKey}`,
+        accept: "application/json",
+      },
+    }
   );
 
-  url.searchParams.set("query", email);
-  url.searchParams.set("first", "20");
-  url.searchParams.set("order", "created_at");
-  url.searchParams.set("direction", "desc");
-
-  const response = await fetch(url.toString(), {
-    method: "GET",
-
-    headers: {
-      Authorization: `Bearer ${apiKey}`,
-      accept: "application/json",
-    },
-  });
+  if (response.status === 404) {
+    return null;
+  }
 
   if (!response.ok) {
-    const errorText = await response.text();
+    const errorText =
+      await response.text();
 
     console.error(
       "Whop payment lookup error:",
+      response.status,
       errorText
     );
 
@@ -114,37 +120,46 @@ async function findPaidDeepReview(
     );
   }
 
-  const result =
-    (await response.json()) as WhopPaymentsResponse;
+  const payment =
+    (await response.json()) as WhopPayment;
+
+  const paymentEmail =
+    normalizeEmail(
+      payment.user?.email || ""
+    );
 
   const normalizedEmail =
     normalizeEmail(email);
 
-    return (
-      result.data?.find((payment) => {
-        const paymentEmail =
-          normalizeEmail(
-            payment.user?.email || ""
-          );
-    
-        return (
-          payment.status === "paid" &&
-          payment.substatus === "succeeded" &&
-          payment.product?.id === productId &&
-          payment.plan?.id === planId &&
-          paymentEmail === normalizedEmail
-        );
-      }) ?? null
+    const paymentSucceeded =
+    payment.substatus === "succeeded" &&
+    (
+      payment.status === "paid" ||
+      payment.total === 0
     );
+  
+  const validPayment =
+    paymentSucceeded &&
+    payment.product?.id === productId &&
+    payment.plan?.id === planId &&
+    paymentEmail === normalizedEmail;
+
+  return validPayment
+    ? payment
+    : null;
 }
+
 
 export const requestDeepReviewAccessCode =
   createServerFn({
     method: "POST",
   })
-    .validator(
-      (data: { email: string }) => data
-    )
+  .validator(
+    (data: {
+      email: string;
+      paymentId: string;
+    }) => data
+  )
     .handler(async ({ data }) => {
       const email =
         normalizeEmail(data.email);
@@ -161,7 +176,10 @@ export const requestDeepReviewAccessCode =
       }
 
       const payment =
-        await findPaidDeepReview(email);
+      await findPaidDeepReview(
+        data.paymentId,
+        email
+      );
 
       /*
         Do not expose detailed payment

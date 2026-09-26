@@ -15,6 +15,18 @@ import {
 export const Route = createFileRoute(
   "/deep-review-payment-return"
 )({
+  validateSearch: (search) => ({
+    payment_id:
+      typeof search["payment_id"] === "string"
+        ? search["payment_id"]
+        : "",
+  
+    receipt_id:
+      typeof search["receipt_id"] === "string"
+        ? search["receipt_id"]
+        : "",
+  }),
+
   head: () => ({
     meta: [
       {
@@ -37,6 +49,12 @@ export const Route = createFileRoute(
 
 function DeepReviewPaymentReturn() {
   const navigate = useNavigate();
+
+  const search = Route.useSearch();
+
+  const paymentId =
+    search.payment_id ||
+    search.receipt_id;
 
   const [codeSent, setCodeSent] =
     useState(false);
@@ -66,6 +84,13 @@ function DeepReviewPaymentReturn() {
       return;
     }
 
+    if (!paymentId) {
+      setMessage(
+        "We could not find your Whop payment reference. Please return to the checkout link and try again."
+      );
+      return;
+    }
+
     setLoading(true);
     setMessage("");
 
@@ -74,6 +99,7 @@ function DeepReviewPaymentReturn() {
         await requestDeepReviewAccessCode({
           data: {
             email,
+            paymentId,
           },
         });
 
