@@ -69,9 +69,12 @@ async function findPaidDeepReview(
   email: string
 ) {
   const apiKey =
-  process.env["WHOP_API_KEY"];
+    process.env["WHOP_API_KEY"];
 
-if (!apiKey) {
+  const planId =
+    process.env["WHOP_DEEP_REVIEW_PLAN_ID"];
+
+  if (!apiKey || !planId) {
     throw new Error(
       "Whop payment verification is not configured."
     );
@@ -81,10 +84,53 @@ if (!apiKey) {
     return null;
   }
 
+  const normalizedEmail =
+    normalizeEmail(email);
+
+  const url = new URL(
+    "https://api.whop.com/api/v1/payments"
+  );
+
+  /*
+    Ask Whop for payments belonging to:
+    1. this customer's email
+    2. this exact Deep Review plan
+
+    include_free=true is required for
+    the $0 test checkout.
+  */
+  url.searchParams.set(
+    "query",
+    normalizedEmail
+  );
+
+  url.searchParams.append(
+    "plan_ids",
+    planId
+  );
+
+  url.searchParams.set(
+    "include_free",
+    "true"
+  );
+
+  url.searchParams.set(
+    "first",
+    "20"
+  );
+
+  url.searchParams.set(
+    "order",
+    "created_at"
+  );
+
+  url.searchParams.set(
+    "direction",
+    "desc"
+  );
+
   const response = await fetch(
-    `https://api.whop.com/api/v1/payments/${encodeURIComponent(
-      paymentId
-    )}`,
+    url.toString(),
     {
       method: "GET",
 
@@ -94,10 +140,6 @@ if (!apiKey) {
       },
     }
   );
-
-  if (response.status === 404) {
-    return null;
-  }
 
   if (!response.ok) {
     const errorText =
@@ -114,75 +156,21 @@ if (!apiKey) {
     );
   }
 
+  const result =
+    (await response.json()) as {
+      data?: WhopPayment[];
+    };
+
+  
   const payment =
-    (await response.json()) as WhopPayment;
+    result.data?.find(
+      (item) =>
+        item.id === paymentId &&
+        item.substatus === "succeeded"
+    ) ?? null;
 
-    const paymentRecord =
-  payment as unknown as Record<string, unknown>;
-
-console.log(
-  "WHOP PAYMENT TOP LEVEL KEYS:",
-  Object.keys(paymentRecord)
-);
-
-for (const [key, value] of Object.entries(
-  paymentRecord
-)) {
-  if (
-    value &&
-    typeof value === "object" &&
-    !Array.isArray(value)
-  ) {
-    console.log(
-      `WHOP KEYS INSIDE ${key}:`,
-      Object.keys(
-        value as Record<string, unknown>
-      )
-    );
-  }
+  return payment;
 }
-
-  const paymentEmail =
-    normalizeEmail(
-      payment.user?.email || ""
-    );
-
-  const normalizedEmail =
-    normalizeEmail(email);
-
-    
-
-    const paymentSucceeded =
-    payment.substatus === "succeeded" &&
-    (
-      payment.status === "paid" ||
-      payment.total === 0
-    );
-  
-    const amount =
-    typeof payment.total === "number"
-      ? payment.total
-      : Number(payment.total?.amount ?? NaN);
-  
-  const testMode =
-    process.env["DEEP_REVIEW_TEST_MODE"] === "true";
-  
-  const validAmount =
-    amount === 1500 ||
-    (testMode && amount === 0);
-  
-  const validPayment =
-    payment.status === "paid" &&
-    payment.substatus === "succeeded" &&
-    validAmount &&
-    paymentEmail === normalizedEmail;
-
-  return validPayment
-    ? payment
-    : null;
-}
-
-
 export const requestDeepReviewAccessCode =
   createServerFn({
     method: "POST",
