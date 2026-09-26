@@ -256,7 +256,7 @@ function DeepReviewPaymentReturn() {
                     maxLength={6}
                     pattern="[0-9]{6}"
                     className="mt-2 w-full rounded-lg border border-[#5b453e]/20 bg-white px-4 py-3 text-center text-2xl tracking-[0.35em] outline-none focus:border-[#5b453e]"
-                    placeholder="••••••"
+                   
                   />
                 </div>
 
