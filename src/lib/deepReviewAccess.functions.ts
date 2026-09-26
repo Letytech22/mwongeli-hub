@@ -481,3 +481,32 @@ export const getDeepReviewAccess =
         session.data.accessGranted === true,
     };
   });
+
+  export const consumeDeepReviewAccess =
+  createServerFn({
+    method: "POST",
+  }).handler(async () => {
+    const session =
+      await useDeepReviewSession();
+
+    if (
+      session.data.accessGranted !== true
+    ) {
+      return {
+        allowed: false,
+      };
+    }
+
+    /*
+      Allow this visit, then immediately
+      consume the confirmation access.
+    */
+    await session.update({
+      ...session.data,
+      accessGranted: false,
+    });
+
+    return {
+      allowed: true,
+    };
+  });

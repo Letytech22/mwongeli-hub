@@ -5,8 +5,10 @@ import {
 
 import { PageShell } from "@/components/site/Layout";
 
+
+
 import {
-  getDeepReviewAccess,
+  consumeDeepReviewAccess,
 } from "@/lib/deepReviewAccess.functions";
 
 const TITLE =
@@ -17,14 +19,15 @@ export const Route = createFileRoute(
 )({
   beforeLoad: async () => {
     const result =
-      await getDeepReviewAccess();
-
+      await consumeDeepReviewAccess();
+  
     if (!result.allowed) {
       throw redirect({
         to: "/deep-review-payment-return",
       });
     }
   },
+    
 
   head: () => ({
     meta: [
