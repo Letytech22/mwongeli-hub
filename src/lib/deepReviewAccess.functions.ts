@@ -469,6 +469,9 @@ export const verifyDeepReviewAccessCode =
       };
     });
 
+
+    
+
 export const getDeepReviewAccess =
   createServerFn({
     method: "GET",
@@ -489,18 +492,19 @@ export const getDeepReviewAccess =
     const session =
       await useDeepReviewSession();
 
+    const paymentId =
+      session.data.paymentId;
+
     if (
       session.data.accessGranted !== true
     ) {
       return {
         allowed: false,
+        paymentId:
+          paymentId || "",
       };
     }
 
-    /*
-      Allow this visit, then immediately
-      consume the confirmation access.
-    */
     await session.update({
       ...session.data,
       accessGranted: false,
@@ -508,5 +512,8 @@ export const getDeepReviewAccess =
 
     return {
       allowed: true,
+      paymentId:
+        paymentId || "",
     };
   });
+    

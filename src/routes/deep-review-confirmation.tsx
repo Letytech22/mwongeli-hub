@@ -24,6 +24,11 @@ export const Route = createFileRoute(
     if (!result.allowed) {
       throw redirect({
         to: "/deep-review-payment-return",
+        search: {
+          payment_id:
+            result.paymentId,
+          receipt_id: "",
+        },
       });
     }
   },
