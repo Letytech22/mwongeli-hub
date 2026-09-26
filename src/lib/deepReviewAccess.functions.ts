@@ -2,19 +2,23 @@ import { createServerFn } from "@tanstack/react-start";
 import { useDeepReviewSession } from "@/lib/deepReviewSession";
 
 type WhopPayment = {
+  id: string;
+  status: string;
+  substatus?: string | null;
+  total?: number;
+
+  product?: {
     id: string;
-    status: string;
-    substatus?: string | null;
-    total?: number;
-  
-    product?: {
-      id: string;
-    } | null;
-  
-    user?: {
-      email?: string | null;
-    } | null;
-  };
+  } | null;
+
+  plan?: {
+    id: string;
+  } | null;
+
+  user?: {
+    email?: string | null;
+  } | null;
+};
 
 type WhopPaymentsResponse = {
   data?: WhopPayment[];
@@ -66,10 +70,14 @@ async function findPaidDeepReview(
   const apiKey =
     process.env["WHOP_API_KEY"];
 
-  const productId =
+    const productId =
     process.env["WHOP_DEEP_REVIEW_PRODUCT_ID"];
 
-  if (!apiKey || !productId) {
+    const planId =
+    process.env["WHOP_DEEP_REVIEW_PLAN_ID"];
+  
+
+    if (!apiKey || !productId || !planId) {
     throw new Error(
       "Whop payment verification is not configured."
     );
@@ -84,21 +92,17 @@ async function findPaidDeepReview(
   url.searchParams.set("order", "created_at");
   url.searchParams.set("direction", "desc");
 
-  const response = await fetch(
-    url.toString(),
-    {
-      method: "GET",
+  const response = await fetch(url.toString(), {
+    method: "GET",
 
-      headers: {
-        Authorization: `Bearer ${apiKey}`,
-        accept: "application/json",
-      },
-    }
-  );
+    headers: {
+      Authorization: `Bearer ${apiKey}`,
+      accept: "application/json",
+    },
+  });
 
   if (!response.ok) {
-    const errorText =
-      await response.text();
+    const errorText = await response.text();
 
     console.error(
       "Whop payment lookup error:",
@@ -116,33 +120,24 @@ async function findPaidDeepReview(
   const normalizedEmail =
     normalizeEmail(email);
 
-  const testMode =
-    process.env["DEEP_REVIEW_TEST_MODE"] ===
-    "true";
-
-  return (
-    result.data?.find((payment) => {
-      const paymentEmail =
-        normalizeEmail(
-          payment.user?.email || ""
+    return (
+      result.data?.find((payment) => {
+        const paymentEmail =
+          normalizeEmail(
+            payment.user?.email || ""
+          );
+    
+        return (
+          payment.status === "paid" &&
+          payment.substatus === "succeeded" &&
+          payment.product?.id === productId &&
+          payment.plan?.id === planId &&
+          paymentEmail === normalizedEmail
         );
-
-      const validAmount =
-        payment.total === 1500 ||
-        (testMode &&
-          payment.total === 0);
-
-      return (
-        payment.status === "paid" &&
-        payment.substatus === "succeeded" &&
-        payment.product?.id ===
-          productId &&
-        validAmount &&
-        paymentEmail === normalizedEmail
-      );
-    }) ?? null
-  );
+      }) ?? null
+    );
 }
+
 export const requestDeepReviewAccessCode =
   createServerFn({
     method: "POST",
