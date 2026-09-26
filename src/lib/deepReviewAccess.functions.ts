@@ -91,24 +91,16 @@ async function findPaidDeepReview(
     "https://api.whop.com/api/v1/payments"
   );
 
-  /*
-    Ask Whop for payments belonging to:
-    1. this customer's email
-    2. this exact Deep Review plan
 
-    include_free=true is required for
-    the $0 test checkout.
-  */
   url.searchParams.set(
     "query",
     normalizedEmail
   );
 
-  url.searchParams.append(
-    "plan_ids",
+  url.searchParams.set(
+    "plan_id",
     planId
   );
-
   url.searchParams.set(
     "include_free",
     "true"
