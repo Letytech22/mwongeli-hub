@@ -60,7 +60,7 @@ function FreeGuidePage() {
           {
             eyebrow: "Go deeper · $49 · PDF",
             title: "Design Research That Holds Together",
-            body: "The full research-design handbook: problem, question, literature, methodology, investigation, interpretation, and the conclusions you can responsibly defend.",
+            body: "A deeper handbook for building a study in which the problem, question, method, evidence, interpretation, and next decision still belong together.",
             cta: "Get the guide ↗",
             href: WHOP.researchGuide49,
           },

@@ -65,10 +65,10 @@ function ResearchGuidePage() {
         </Card>
       </Section>
 
-      {/*
+     
 
       <NextOffers
-        heading="Want a second pair of eyes on the actual study?"
+        heading="Where researchers usually go next?"
         items={[
           {
             eyebrow: "01 · 60 minutes · $150",
@@ -86,14 +86,14 @@ function ResearchGuidePage() {
           },
           {
             eyebrow: "Free · PDF",
-            title: "Before You Choose a Method",
-            body: "The starter guide: topic vs problem vs gap vs question, the Research Spine, the Question Stress Test and the Method-Last Test.",
+            title: "Good Research Starts Long Before the Method",
+            body: "A practical guide to finding the real research problem, sharpening the question, and deciding what an answer would require before you choose a method.",
             cta: "Get the free guide →",
             to: "/free-guide",
           },
         ]}
       />
-*/}
+
     </PageShell>
   );
 }
