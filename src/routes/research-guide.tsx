@@ -65,6 +65,8 @@ function ResearchGuidePage() {
         </Card>
       </Section>
 
+      {/*
+
       <NextOffers
         heading="Want a second pair of eyes on the actual study?"
         items={[
@@ -91,7 +93,7 @@ function ResearchGuidePage() {
           },
         ]}
       />
-
+*/}
     </PageShell>
   );
 }
