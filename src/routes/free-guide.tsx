@@ -26,13 +26,15 @@ function FreeGuidePage() {
     <PageShell>
       <Section className="pt-14">
         <Eyebrow>Your download is ready</Eyebrow>
-        <h1 className="mt-4 text-4xl leading-tight sm:text-5xl">Before You Choose a Method</h1>
+        <h1 className="mt-4 text-4xl leading-tight sm:text-5xl">
+        Good Research Starts Long Before the Method</h1>
         
         <div className="mt-6 rounded-r-xl border-l-4 border-[#9a8555] bg-[#5b453e]/[0.04] px-5 py-4">
   <p className="text-[0.95rem] leading-[1.7] text-[#5b453e]/85">
-    This guide is designed to help you work out whether you actually have a
-    research problem, whether the question can be answered, and what needs to
-    be clear before you choose a method.
+  This guide takes you through the thinking that should happen before the method:
+   identifying the real research problem, finding what is genuinely unresolved, 
+   sharpening the question,
+   and deciding what kind of answer the study needs to produce.
   </p>
 </div>
         <Card className="mt-8 max-w-2xl">
@@ -40,7 +42,7 @@ function FreeGuidePage() {
             Free · PDF
           </p>
           <a
-  href="https://drive.google.com/uc?export=download&id=1-L4xDUMSp3pFjr7oB5PUsYl-qz6zRSeL"
+  href="https://drive.google.com/uc?export=download&id=1jTKlfyoQHqsGhkptS4LEPecWp7Aehjxv"
   className="mt-4 inline-flex items-center justify-center rounded-full bg-accent px-7 py-3.5 text-sm font-semibold uppercase tracking-[0.12em] text-accent-contrast no-underline transition-all hover:-translate-y-0.5 hover:opacity-90"
 >
   Download the guide ↓

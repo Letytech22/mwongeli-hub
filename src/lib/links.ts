@@ -1,4 +1,4 @@
-// Central place for all external links. Update here and the whole site follows.
+// Central place for all external links. 
 
 export const WHOP = {
   freeGuide: "https://whop.com/checkout/plan_ucftzQx42Le7R",

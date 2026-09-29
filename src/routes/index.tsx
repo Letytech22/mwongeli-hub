@@ -151,15 +151,17 @@ function FreeResearchGuide() {
               Free Research Guide
             </p>
 
+           
+
             <h2 className="mt-7 font-display text-sm font-bold text-white sm:text-base">
-              Before You Choose a Method
+            Good Research Starts Long Before the Method
             </h2>
 
             <p className="mt-7 max-w-[850px] text-xs leading-[1.7] text-white/95 sm:text-sm">
-              How to tell whether you have a real research problem, turn it
-              into an answerable question, and avoid building a study around
-              the wrong thing.
+            Find the real research problem, sharpen the question, 
+            and work out what a credible answer would require before you commit to a method.
             </p>
+
           </div>
 
           {/* Right */}
@@ -809,17 +811,17 @@ function Resources() {
           <div className="lg:border-r lg:border-[#5b453e]/60 lg:pr-12">
 
             <p className="text-[0.95rem] uppercase tracking-[0.02em] text-[#5b453e]/80">
-              Start here · Before the method
+              Start here · FREE RESEARCH GUIDE
             </p>
 
+
             <h3 className="mt-5 font-display text-sm font-bold text-[#5b453e]">
-              Before You Choose a Method
+            Good Research Starts Long Before the Method
             </h3>
 
             <p className="mt-6 text-base leading-[1.5] text-[#5b453e]/90">
-              This guide is designed to help you work out whether you actually
-              have a research problem, whether the question can be answered,
-              and what needs to be clear before you choose a method.
+            A practical guide to finding the real research problem, sharpening the question, 
+            and deciding what an answer would require before you choose a method.
             </p>
 
             <p className="mt-6 text-base text-[#5b453e]">
@@ -827,14 +829,13 @@ function Resources() {
             </p>
 
             <ul className="mt-5 space-y-1 text-base leading-[1.45] text-[#5b453e]/90">
-              <li>→ The difference between a topic, a problem, a gap, and a research question</li>
-              <li>→ Bad, mediocre, and strong examples, with explanations</li>
-              <li>→ The Research Spine, a seven-part way to check whether your study holds together before you start</li>
-              <li>→ A nine-question Research Question Stress Test</li>
-              <li>→ A Method-Last Test to stop you choosing methods because they are familiar, fashionable, or available</li>
-              <li>→ Worked cases from experimental, computational, and people-based research</li>
-              <li>→ A one-page Research Readiness Check you can use before writing a proposal or starting data collection</li>
-              <li>→ A short section on using AI without handing over the thinking that makes you a researcher</li>
+              <li>→ Tell the difference between a topic, a research problem, and a useful research gap</li>
+              <li>→ Use the literature to work out what is genuinely known and what remains unresolved</li>
+              <li>→ Build the Research Spine from the original problem to the method</li>
+              <li>→ Turn a broad idea into a research question that can actually be answered</li>
+              <li>→ Stress-test the question for scope, assumptions, relevance, and answerability</li>
+              <li>→ Choose the method from the answer you need, rather than the other way around</li>
+              <li>→  Use the Research Readiness Check before committing to data collection, experiments, or simulation</li>
             </ul>
 {/*
             <div className="mt-6 rounded-r-xl border-l-4 border-[#9a8555] bg-[#5b453e]/[0.04] px-5 py-4">
@@ -866,7 +867,7 @@ function Resources() {
           <div className="lg:pl-12">
 
             <p className="text-[0.95rem] uppercase tracking-[0.02em] text-[#5b453e]/80">
-              Research design guide
+            FULL RESEARCH DESIGN HANDBOOK
             </p>
 
             <h3 className="mt-5 font-display text-sm font-bold text-[#5b453e]">
@@ -874,9 +875,8 @@ function Resources() {
             </h3>
 
             <p className="mt-6 text-base leading-[1.5] text-[#5b453e]/90">
-              A practical research-design handbook for moving from the problem
-              through the question, literature, methodology, investigation,
-              interpretation, and the conclusions you can responsibly defend.
+            A deeper handbook for building a study in which the problem, question, 
+            method, evidence, interpretation, and next decision still belong together.
             </p>
 
             <p className="mt-6 text-base text-[#5b453e]">
@@ -884,15 +884,14 @@ function Resources() {
             </p>
 
             <ul className="mt-5 space-y-1 text-base leading-[1.45] text-[#5b453e]/90">
-              <li>→ A practical process for moving from a vague idea to a research problem worth investigating</li>
-              <li>→ How to read literature to change your understanding rather than merely collect citations</li>
-              <li>→ How to design research questions that are answerable, consequential, and appropriately scoped</li>
-              <li>→ How to decide what kind of evidence would actually answer the question</li>
-              <li>→ How to choose methods from the question rather than force questions around familiar methods</li>
-              <li>→ Experimental, computational, and people-based worked cases throughout</li>
-              <li>→ Tools for assumptions, variables, measurement quality, controls, comparison, bias, uncertainty, and validity</li>
-              <li>→ A section on exploratory vs confirmatory work, preregistration, and honest interpretation</li>
-              <li>→ How to diagnose failed, confusing, or inconclusive research</li>
+              <li>→ Build the full Research Spine from the problem through evidence, interpretation, and the next decision</li>
+              <li>→ Read literature to change your understanding, identify the unresolved piece, and refine the question</li>
+              <li>→ Define what a credible answer would require before deciding how to investigate it</li>
+              <li>→ Design measurement, sampling, controls, comparisons, and validity around the question you are actually asking</li>
+              <li>→ Plan analysis before the evidence arrives, then diagnose results that fail, conflict, or refuse to behave neatly</li>
+              <li>→ Separate what the evidence supports from what you hoped to conclude, including the limits of the claim</li>
+              <li>→ Work through scientific cases, diagnostic tools, worksheets, and research-design checks you can apply to your own study</li>
+             
             </ul>
 
             <p className="mt-6 text-[0.95rem] font-bold uppercase">
@@ -905,7 +904,7 @@ function Resources() {
               rel="noopener noreferrer"
               className="mt-1 inline-block text-[0.95rem] font-bold uppercase text-[#5b453e] no-underline hover:underline hover:underline-offset-4"
             >
-              Get the guide ↗
+              GET THE HANDBOOK ↗
             </a>
           </div>
 

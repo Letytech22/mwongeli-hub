@@ -40,9 +40,9 @@ function ResearchGuidePage() {
         </p>
 
         <p className="mt-4 max-w-2xl text-lg leading-relaxed text-muted-foreground">
-          The guide will take you from the research problem through the
-          question, design, investigation, interpretation, and the conclusions
-          you can responsibly defend.
+        This handbook takes you through the full research journey, 
+        from defining the problem and designing the investigation to evaluating the evidence, 
+        interpreting what it supports, and deciding what should happen next.
         </p>
 
         <Card className="mt-8 max-w-2xl">
@@ -52,7 +52,7 @@ function ResearchGuidePage() {
           </p>
 
           <a
-            href="https://drive.google.com/uc?export=download&id=1Fb4hjsdjCTvNgIR7uFBozZkaVjIp-NjC"
+            href="https://drive.google.com/uc?export=download&id=1mmFUL8UN26uteHDVy8pcrKF8VEUZGwcJ"
             className="mt-4 inline-flex items-center justify-center rounded-full bg-accent px-7 py-3.5 text-sm font-semibold uppercase tracking-[0.12em] text-accent-contrast no-underline transition-all hover:-translate-y-0.5 hover:opacity-90"
           >
             Download the handbook ↓
